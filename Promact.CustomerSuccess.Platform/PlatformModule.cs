@@ -48,6 +48,7 @@ using Volo.Abp.Security.Claims;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
+using Acme.TestAbp.Data;
 
 namespace Promact.CustomerSuccess.Platform;
 
@@ -96,7 +97,13 @@ namespace Promact.CustomerSuccess.Platform;
     // Setting Management module packages
     typeof(AbpSettingManagementApplicationModule),
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
-    typeof(AbpSettingManagementHttpApiModule)
+    typeof(AbpSettingManagementHttpApiModule),
+
+
+    typeof(AbpAspNetCoreMvcModule),
+    typeof(AbpAutofacModule),
+    typeof(AbpEntityFrameworkCorePostgreSqlModule)
+
 )]
 public class PlatformModule : AbpModule
 {
@@ -141,6 +148,21 @@ public class PlatformModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+
+        context.Services.AddEndpointsApiExplorer();
+        context.Services.AddSwaggerGen();
+        context.Services.AddAbpDbContext<ApprovedTeamDbContext>(options =>
+        {
+            options.AddDefaultRepositories(includeAllEntities: true);
+        });
+        Configure<AbpDbContextOptions>(options =>
+        {
+            options.UseNpgsql();
+        });
+
+
+
+
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
 
@@ -348,8 +370,10 @@ public class PlatformModule : AbpModule
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
-
+        app.UseHttpsRedirection();
         app.UseAbpRequestLocalization();
 
         if (!env.IsDevelopment())
