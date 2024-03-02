@@ -1,4 +1,5 @@
-﻿using Acme.TestAbp.Entities;
+﻿
+using Promact.CustomerSuccess.Platform.Entities;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
 namespace Acme.TestAbp.Repositories

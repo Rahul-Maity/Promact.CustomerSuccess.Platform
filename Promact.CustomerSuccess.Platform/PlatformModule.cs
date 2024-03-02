@@ -48,7 +48,7 @@ using Volo.Abp.Security.Claims;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
-using Acme.TestAbp.Data;
+
 
 namespace Promact.CustomerSuccess.Platform;
 
@@ -155,6 +155,7 @@ public class PlatformModule : AbpModule
         {
             options.AddDefaultRepositories(includeAllEntities: true);
         });
+       
         Configure<AbpDbContextOptions>(options =>
         {
             options.UseNpgsql();

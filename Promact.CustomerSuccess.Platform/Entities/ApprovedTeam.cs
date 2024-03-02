@@ -1,7 +1,8 @@
 ﻿using System;
 using Volo.Abp.Domain.Entities;
 
-namespace Acme.TestAbp.Entities
+//namespace Acme.TestAbp.Entities
+namespace Promact.CustomerSuccess.Platform.Entities
 {
     public class ApprovedTeam : Entity<Guid>
     {

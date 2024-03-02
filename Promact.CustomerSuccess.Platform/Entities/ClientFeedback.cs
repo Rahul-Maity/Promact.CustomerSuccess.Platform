@@ -4,7 +4,7 @@ using Volo.Abp.Domain.Entities;
 namespace Promact.CustomerSuccess.Platform.Entities
 {
     public class ClientFeedback : Entity<Guid>
-    {
+    { 
         [ForeignKey("Project")]
         public Guid ProjectId { get; set; }
         public DateTime FeedbackDate { get; set; }

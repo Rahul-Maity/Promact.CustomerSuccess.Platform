@@ -1,20 +1,16 @@
-﻿
-using Volo.Abp.Application.Dtos;
+﻿using System.ComponentModel.DataAnnotations;
 
-//namespace Acme.TestAbp.Services.Dtos
 namespace Promact.CustomerSuccess.Platform.Services.Dtos
 {
-    public class ApprovedTeamDto:IEntityDto<Guid>
+    public class CreateApprovedTeamDto
     {
-        public Guid Id { get; set; }
+        [Required]
+        [StringLength(128)]
         public string TeamName { get; set; }
         public int NumberOfResources { get; set; }
         public string Role { get; set; }
         public int AvailabilityPercentage { get; set; }
         public DateTime Duration { get; set; }
+
     }
-
-  
-
-  
 }

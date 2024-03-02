@@ -18,7 +18,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         : base(options)
     {
     }
-
+    public DbSet<Resource> Resource { get; set; }
     public DbSet<Project> Projects { get; set; }
     public DbSet<Document> Documents { get; set; }
     public DbSet<DocumentVersion> DocumentVersions { get; set; }
@@ -49,6 +49,11 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.ConfigureTenantManagement();
 
         /* Configure your own entities here */
+        builder.Entity<Resource>(Resource =>
+        {
+            Resource.ConfigureByConvention();
+        }
+        );
         builder.Entity<DocumentVersion>(entity =>
         {                        
             entity.ConfigureByConvention();

@@ -1,28 +1,54 @@
-﻿using Acme.TestAbp.Entities;
+﻿
 using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Data;
+using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
-
-namespace Acme.TestAbp.Data
+using Volo.Abp.PermissionManagement.EntityFrameworkCore;
+using Promact.CustomerSuccess.Platform.Entities;
+namespace Promact.CustomerSuccess.Platform.Data
 {
-    public class ApprovedTeamDbContext : AbpDbContext<ApprovedTeamDbContext>
+    [ReplaceDbContext(typeof(IIdentityProDbContext))]
+    [ReplaceDbContext(typeof(ISaasDbContext))]
+    [ConnectionStringName("Default")]
+    public class ApprovedTeamDbContext :
+        AbpDbContext<ApprovedTeamDbContext>,
+        IIdentityProDbContext,
+        ISaasDbContext
+
+
     {
-        public DbSet<ApprovedTeam> ApprovedTeams => Set<ApprovedTeam>();
+        public DbSet<ApprovedTeam> ApprovedTeams{get; set;}
         public ApprovedTeamDbContext(DbContextOptions<ApprovedTeamDbContext> options) : base(options) { }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseNpgsql("Default");
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ApprovedTeam>(b =>
+            base.OnModelCreating(builder);
+            builder.ConfigurePermissionManagement();
+            builder.Entity<ApprovedTeam>(b =>
             {
                 b.ToTable("ApprovedTeams");
                 b.ConfigureByConvention();
-
+                b.Property(x => x.TeamName).IsRequired().HasMaxLength(128);
             });
         }
+     
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    base.OnConfiguring(optionsBuilder);
+
+        //}
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //modelBuilder.Entity<ApprovedTeam>(b =>
+        //    {
+        //        b.ToTable("ApprovedTeams");
+        //        b.ConfigureByConvention();
+
+        //    });
+        //}
+
     }
 }
