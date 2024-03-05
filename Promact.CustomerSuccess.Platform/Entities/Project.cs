@@ -12,7 +12,8 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public virtual ICollection<RiskProfile>? RiskProfiles { get; set; }
         public virtual ICollection<PhaseMilestone>? PhaseMilestones { get; set; }
         public virtual ICollection<ProjectResources>? Resources { get; set; }
-        public virtual ICollection<ClientFeedback>? ClientFeedbacks { get; set; }
+      
+        //public virtual ICollection<ClientFeedback>? ClientFeedbacks { get; set; }
         public virtual ICollection<MeetingMinute>? MeetingMinutes { get; set; }
     }
 }

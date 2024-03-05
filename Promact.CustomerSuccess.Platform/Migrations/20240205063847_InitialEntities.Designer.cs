@@ -77,30 +77,30 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.ClientFeedback", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uuid");
+            //modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.ClientFeedback", b =>
+            //    {
+            //        b.Property<Guid>("Id")
+            //            .HasColumnType("uuid");
 
-                    b.Property<string>("Details")
-                        .IsRequired()
-                        .HasColumnType("text");
+            //        b.Property<string>("Details")
+            //            .IsRequired()
+            //            .HasColumnType("text");
 
-                    b.Property<DateTime>("FeedbackDate")
-                        .HasColumnType("timestamp without time zone");
+            //        b.Property<DateTime>("FeedbackDate")
+            //            .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("FeedbackType")
-                        .HasColumnType("integer");
+            //        b.Property<int>("FeedbackType")
+            //            .HasColumnType("integer");
 
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uuid");
+            //        b.Property<Guid>("ProjectId")
+            //            .HasColumnType("uuid");
 
-                    b.HasKey("Id");
+            //        b.HasKey("Id");
 
-                    b.HasIndex("ProjectId");
+            //        b.HasIndex("ProjectId");
 
-                    b.ToTable("ClientFeedbacks");
-                });
+            //        b.ToTable("ClientFeedbacks");
+            //    });
 
             modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.Document", b =>
                 {
@@ -2422,16 +2422,16 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.ClientFeedback", b =>
-                {
-                    b.HasOne("Promact.CustomerSuccess.Platform.Entities.Project", "Project")
-                        .WithMany("ClientFeedbacks")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            //modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.ClientFeedback", b =>
+            //    {
+            //        b.HasOne("Promact.CustomerSuccess.Platform.Entities.Project", "Project")
+            //            .WithMany("ClientFeedbacks")
+            //            .HasForeignKey("ProjectId")
+            //            .OnDelete(DeleteBehavior.Cascade)
+            //            .IsRequired();
 
-                    b.Navigation("Project");
-                });
+            //        b.Navigation("Project");
+            //    });
 
             modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.Document", b =>
                 {
@@ -2814,7 +2814,7 @@ namespace Promact.CustomerSuccess.Platform.Migrations
 
             modelBuilder.Entity("Promact.CustomerSuccess.Platform.Entities.Project", b =>
                 {
-                    b.Navigation("ClientFeedbacks");
+                    //b.Navigation("ClientFeedbacks");
 
                     b.Navigation("Documents");
 

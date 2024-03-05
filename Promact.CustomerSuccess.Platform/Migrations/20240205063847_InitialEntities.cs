@@ -126,26 +126,26 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ClientFeedbacks",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProjectId = table.Column<Guid>(type: "uuid", nullable: false),
-                    FeedbackDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    FeedbackType = table.Column<int>(type: "integer", nullable: false),
-                    Details = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClientFeedbacks", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ClientFeedbacks_Projects_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Projects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "ClientFeedbacks",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<Guid>(type: "uuid", nullable: false),
+            //        ProjectId = table.Column<Guid>(type: "uuid", nullable: false),
+            //        FeedbackDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+            //        FeedbackType = table.Column<int>(type: "integer", nullable: false),
+            //        Details = table.Column<string>(type: "text", nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_ClientFeedbacks", x => x.Id);
+            //        table.ForeignKey(
+            //            name: "FK_ClientFeedbacks_Projects_ProjectId",
+            //            column: x => x.ProjectId,
+            //            principalTable: "Projects",
+            //            principalColumn: "Id",
+            //            onDelete: ReferentialAction.Cascade);
+            //    });
 
             migrationBuilder.CreateTable(
                 name: "Documents",
@@ -481,10 +481,10 @@ namespace Promact.CustomerSuccess.Platform.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_ClientFeedbacks_ProjectId",
-                table: "ClientFeedbacks",
-                column: "ProjectId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_ClientFeedbacks_ProjectId",
+            //    table: "ClientFeedbacks",
+            //    column: "ProjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Documents_ProjectId",
@@ -640,8 +640,8 @@ namespace Promact.CustomerSuccess.Platform.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ClientFeedbacks");
+            //migrationBuilder.DropTable(
+            //    name: "ClientFeedbacks");
 
             migrationBuilder.DropTable(
                 name: "DocumentVersions");

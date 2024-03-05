@@ -14,6 +14,8 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public IEnumerable<PhaseMilestoneDto>? PhaseMilestones { get; set; }
         public IEnumerable<ProjectResourcesDto>? Resources { get; set; }
         public IEnumerable<ClientFeedbackDto>? ClientFeedbacks { get; set; }
+        public IEnumerable<ApprovedTeamDto>?ApprovedTeamDtos { get; set; }
+
         public IEnumerable<MeetingMinuteDto>? MeetingMinutes { get; set; }
 
     }

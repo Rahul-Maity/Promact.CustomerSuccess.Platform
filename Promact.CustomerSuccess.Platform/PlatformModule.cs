@@ -48,6 +48,8 @@ using Volo.Abp.Security.Claims;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
+using Autofac.Core;
+
 
 namespace Promact.CustomerSuccess.Platform;
 
@@ -141,6 +143,8 @@ public class PlatformModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+     
+
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
 

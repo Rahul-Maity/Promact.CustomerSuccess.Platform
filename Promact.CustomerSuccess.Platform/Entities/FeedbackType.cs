@@ -2,7 +2,7 @@
 {
     public enum FeedbackType
     {
-        Positive,
-        Negative
+        Complaint,
+        Appreciation
     }
 }

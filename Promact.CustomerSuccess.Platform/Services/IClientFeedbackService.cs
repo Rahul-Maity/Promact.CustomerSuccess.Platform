@@ -4,6 +4,5 @@ namespace Promact.CustomerSuccess.Platform.Services
 {
     public interface IClientFeedbackService:IApplicationService
     {
-        
     }
 }

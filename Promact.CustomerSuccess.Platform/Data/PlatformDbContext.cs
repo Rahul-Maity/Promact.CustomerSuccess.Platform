@@ -18,13 +18,15 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         : base(options)
     {
     }
+    public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
     public DbSet<ApprovedTeam>ApprovedTeams { get; set; }
+   
     public DbSet<ProjectUpdate> ProjectUpdates { get; set; }
     public DbSet<Project> Projects { get; set; }
     public DbSet<Document> Documents { get; set; }
     public DbSet<DocumentVersion> DocumentVersions { get; set; }
     public DbSet<Organization> Organizations { get; set; }
-    public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
+
     public DbSet<ProjectBudget> ProjectBudgets { get; set; }
     public DbSet<PhaseMilestone> PhaseMilestones { get; set; }
     public DbSet<ProjectResources> ProjectResources { get; set; }
@@ -50,9 +52,15 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.ConfigureTenantManagement();
 
         /* Configure your own entities here */
+      
         builder.Entity<ApprovedTeam>(ApprovedTeam =>
         {
             ApprovedTeam.ConfigureByConvention();
+        });
+
+        builder.Entity<ClientFeedback>(ClientFeedback =>
+        {
+            ClientFeedback.ConfigureByConvention();
         });
         builder.Entity<ProjectUpdate>(ProjectUpdate =>
         {
@@ -98,10 +106,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         {
             PhaseMilestone.ConfigureByConvention();
         });
-        builder.Entity<ClientFeedback>(ClientFeedback =>
-        {
-            ClientFeedback.ConfigureByConvention();
-        });
+     
         builder.Entity<Document>(Document =>
         {
             Document.ConfigureByConvention();
