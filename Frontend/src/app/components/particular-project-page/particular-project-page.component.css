@@ -1,0 +1,15 @@
+.title{
+    margin: 12px 20px;
+    h2{
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    }
+  }
+
+
+.form-group{
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto    ;
+}

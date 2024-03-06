@@ -1,0 +1,41 @@
+<div class="form-container">
+    <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()">
+        <div class="outer-form-container">
+
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Project ID</mat-label>
+                    <input matInput formControlName="projectId" placeholder="Project ID">
+                    <mat-error *ngIf="meetingForm.get('projectId')?.invalid">Project ID is required.</mat-error>
+                  </mat-form-field>
+                
+                  <mat-form-field appearance="outline">
+                    <mat-label>Meeting Date</mat-label>
+                    <input matInput formControlName="meetingDate" placeholder="Meeting Date" [matDatepicker]="datePicker">
+                    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datePicker></mat-datepicker>
+                    <mat-error *ngIf="meetingForm.get('meetingDate')?.invalid">Meeting Date is required.</mat-error>
+                  </mat-form-field>
+            </div>
+
+            <div class="inner-form-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>MoM Link</mat-label>
+                    <input matInput formControlName="moMLink" placeholder="MoM Link">
+                    <mat-error *ngIf="meetingForm.get('moMLink')?.invalid">MoM Link is required.</mat-error>
+                  </mat-form-field>
+                
+                  <mat-form-field appearance="outline">
+                    <mat-label>Comments</mat-label>
+                    <input matInput formControlName="comments" placeholder="Comments">
+                  </mat-form-field>
+            </div>
+      
+            <div class="inner-form-container">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </div>
+     
+    </div>
+      </form>
+      
+</div>

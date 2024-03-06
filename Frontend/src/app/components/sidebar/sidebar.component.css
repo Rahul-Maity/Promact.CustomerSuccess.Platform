@@ -1,0 +1,35 @@
+.outer-container{
+    /* min-height: 200px; */
+    /* height: 87%; */
+    background-color: #f8f9fa;
+    position: absolute;
+    margin-top: 10px;
+    width: 200px;
+    height: 100vh;
+}
+
+.button-container{
+    background-color:#f8f9fa;
+    margin: 10px;
+    padding: 10px;
+    button{
+        cursor: pointer;
+        width: 95%;
+        height: 40px;
+      color: white;
+      background-color: rgb(48, 114, 181);
+      border: none;
+    }
+}
+
+.all-projects,.project-details{
+    margin-top: 10px;
+    width: 75%;
+    background-color: #b5e2fa;
+    border: none;
+    padding: 15px 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+}

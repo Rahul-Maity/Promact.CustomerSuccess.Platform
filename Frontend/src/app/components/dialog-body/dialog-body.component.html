@@ -1,0 +1,43 @@
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Project Details</ng-template>
+        <mat-form-field>
+          <mat-label>Project Name</mat-label>
+          <input matInput placeholder="Enter project name here" formControlName="projectName" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Project Details</mat-label>
+          <input matInput placeholder="Enter project Description here" formControlName="projectDetails" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button matStepperNext color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+   
+    <mat-step>
+      <ng-template matStepLabel>Select Project Manager </ng-template>
+      <mat-form-field>
+        <mat-label>Select Project Manager</mat-label>
+        <mat-select>
+          @for (food of foods; track food) {
+            <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+      
+        <mat-dialog-actions>
+            <button mat-raised-button matStepperPrevious color="primary">Back</button>
+            <button mat-raised-button mat-dialog-close cdkFocusInitial color="primary" (click)="onClick()">Done</button>
+            <!-- <button mat-button (click)="stepper.reset()">Done</button> -->
+        </mat-dialog-actions>
+     
+      </div>
+    </mat-step>
+  </mat-stepper>
+  

@@ -1,0 +1,9 @@
+.outer-container{
+    position: absolute;
+    width: 55rem;
+    height: 87%;
+    margin: 10px 220px;
+    /* background-color: #f8f9fa; */
+    /* border: 2px solid black; */
+}
+
