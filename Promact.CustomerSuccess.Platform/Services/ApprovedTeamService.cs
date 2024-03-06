@@ -18,8 +18,8 @@ namespace Promact.CustomerSuccess.Platform.Services
              UpdateApprovedTeamDto>,     // DTO used for updating entities
          IApprovedTeamService            // The contract interface
     {
-        public ApprovedTeamService(IRepository<ApprovedTeam, Guid> approvedTeamRepository)
-            : base(approvedTeamRepository)
+        public ApprovedTeamService(IRepository<ApprovedTeam, Guid> ApprovedTeamRepository)
+            : base(ApprovedTeamRepository)
         {
           
         }

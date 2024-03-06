@@ -2,7 +2,7 @@
 
 namespace Promact.CustomerSuccess.Platform.Services
 {
-    public interface IProjectResourceService:IApplicationService
+    public interface IProjectResourcesService:IApplicationService
     {
     }
 }

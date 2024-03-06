@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Promact.CustomerSuccess.Platform.Entities;
+using System.Reflection.Emit;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
@@ -18,8 +19,9 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         : base(options)
     {
     }
+    public DbSet<ApprovedTeam> ApprovedTeams { get; set; }
     public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
-    public DbSet<ApprovedTeam>ApprovedTeams { get; set; }
+  
    
     public DbSet<ProjectUpdate> ProjectUpdates { get; set; }
     public DbSet<Project> Projects { get; set; }
@@ -39,6 +41,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        
         base.OnModelCreating(builder);
 
         /* Include modules to your migration db context */
@@ -53,14 +56,16 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
 
         /* Configure your own entities here */
       
-        builder.Entity<ApprovedTeam>(ApprovedTeam =>
-        {
-            ApprovedTeam.ConfigureByConvention();
-        });
+      
 
         builder.Entity<ClientFeedback>(ClientFeedback =>
         {
             ClientFeedback.ConfigureByConvention();
+        });
+
+        builder.Entity<ApprovedTeam>(ApprovedTeam =>
+        {
+            ApprovedTeam.ConfigureByConvention();
         });
         builder.Entity<ProjectUpdate>(ProjectUpdate =>
         {
