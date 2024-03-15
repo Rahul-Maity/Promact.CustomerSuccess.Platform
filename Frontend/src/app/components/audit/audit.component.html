@@ -1,0 +1,73 @@
+<div class="form-container">
+    <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Project ID</mat-label>
+            <input matInput formControlName="projectId" placeholder="Project ID">
+            <mat-error *ngIf="auditForm.get('projectId')?.invalid">Project ID is required.</mat-error>
+          </mat-form-field>
+  
+          <!-- <mat-form-field appearance="outline">
+            <mat-label>Date of Audit</mat-label>
+            <input matInput formControlName="dateOfAudit" placeholder="Date of Audit" [matDatepicker]="datePicker">
+            <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+            <mat-datepicker #datePicker></mat-datepicker>
+            <mat-error *ngIf="auditForm.get('dateOfAudit')?.invalid">Date of Audit is required.</mat-error>
+          </mat-form-field> --> 
+
+          <mat-form-field appearance="outline">
+            <mat-label>Date Received</mat-label>
+            <input matInput formControlName="dateOfAudit" placeholder="Date Received" [matDatepicker]="dateReceivedPicker">
+            <mat-datepicker-toggle matSuffix [for]="dateReceivedPicker"></mat-datepicker-toggle>
+            <mat-datepicker #dateReceivedPicker></mat-datepicker>
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+
+
+
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Reviewed By</mat-label>
+            <input matInput formControlName="reviewedBy" placeholder="Reviewed By">
+            <mat-error *ngIf="auditForm.get('reviewedBy')?.invalid">Reviewed By is required.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <input matInput formControlName="status" placeholder="Status">
+            <mat-error *ngIf="auditForm.get('status')?.invalid">Status is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Reviewed Section</mat-label>
+            <input matInput formControlName="reviewedSection" placeholder="Reviewed Section">
+            <mat-error *ngIf="auditForm.get('reviewedSection')?.invalid">Reviewed Section is required.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Comment Queries</mat-label>
+            <input matInput formControlName="commentQueries" placeholder="Comment Queries">
+            <mat-error *ngIf="auditForm.get('commentQueries')?.invalid">Comment Queries is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Action Item</mat-label>
+            <input matInput formControlName="actionItem" placeholder="Action Item">
+            <mat-error *ngIf="auditForm.get('actionItem')?.invalid">Action Item is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

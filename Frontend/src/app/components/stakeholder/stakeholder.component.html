@@ -1,0 +1,68 @@
+<div class="form-container">
+    <form [formGroup]="stakeholderForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+       
+            <mat-select formControlName="title">
+                @for (food of foods; track food) {
+                  <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                }
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Name">
+            <mat-error *ngIf="stakeholderForm.get('name')?.invalid">Name is required.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inner-form-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Contact</mat-label>
+                <input matInput formControlName="contact" placeholder="example@email.com">
+                <mat-error *ngIf="stakeholderForm.get('contact')?.invalid">Contact is required.</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Project ID</mat-label>
+                <input matInput formControlName="projectId" placeholder="Project ID">
+                <mat-error *ngIf="stakeholderForm.get('projectId')?.invalid">Project ID is required.</mat-error>
+              </mat-form-field>
+          
+        </div>
+       
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  
+
+
+
+  
+
+
+

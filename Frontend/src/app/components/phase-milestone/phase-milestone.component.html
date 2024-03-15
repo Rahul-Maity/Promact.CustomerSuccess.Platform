@@ -1,0 +1,66 @@
+<div class="form-container">
+    <form [formGroup]="phaseMileStoneForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" placeholder="Title">
+            <mat-error *ngIf="phaseMileStoneForm.get('title')?.invalid">Title is required.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" placeholder="Description">
+            <mat-error *ngIf="phaseMileStoneForm.get('description')?.invalid">Description is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" placeholder="Start Date">
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+            <mat-error *ngIf="phaseMileStoneForm.get('startDate')?.invalid">Start Date is required.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endDatePicker" formControlName="endDate" placeholder="End Date">
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+            <mat-error *ngIf="phaseMileStoneForm.get('endDate')?.invalid">End Date is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <!-- <input matInput formControlName="status" placeholder="Status">
+            <mat-error *ngIf="phaseMileStoneForm.get('status')?.invalid">Status is required.</mat-error> -->
+            <mat-select formControlName="status">
+                @for (food of foods; track food) {
+                  <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                }
+              </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Comments</mat-label>
+            <input matInput formControlName="comments" placeholder="Comments">
+            <mat-error *ngIf="phaseMileStoneForm.get('comments')?.invalid">Comments are required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Project ID</mat-label>
+                <input matInput formControlName="projectId" placeholder="Project ID">
+                <!-- <mat-error *ngIf="feedbackForm.get('projectId').invalid">Project ID is required.</mat-error> -->
+              </mat-form-field>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

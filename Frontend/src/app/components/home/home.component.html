@@ -1,6 +1,17 @@
 <div class="outer-container">
 <div class="nav-container">
-
+<div class="text-container">
+    <p>Customer Success</p>
+</div>
+    <div class="input-container">
+        <input matInput placeholder="Search Here" class="no-border">
+        <mat-icon matPrefix>search</mat-icon>
+    </div>
+ 
+      <app-login-button *ngIf="(auth.isAuthenticated$ | async) === false"></app-login-button>
+      <app-logout-button *ngIf="auth.isAuthenticated$ | async"></app-logout-button>
+      
+<!-- button here -->
 </div>
 
     <app-sidebar></app-sidebar>
@@ -8,3 +19,7 @@
 
 
 </div>
+
+
+
+<!-- https://localhost:44347/account/login,  -->

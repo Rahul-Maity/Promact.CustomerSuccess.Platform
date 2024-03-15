@@ -1,0 +1,40 @@
+<div class="form-container">
+    <form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Name">
+            <mat-error *ngIf="documentForm.get('name')?.invalid">Name is required.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" placeholder="Description">
+            <mat-error *ngIf="documentForm.get('description')?.invalid">Description is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>URL</mat-label>
+            <input matInput formControlName="url" placeholder="URL">
+            <mat-error *ngIf="documentForm.get('url')?.invalid">URL is required.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Project ID</mat-label>
+            <input matInput formControlName="projectId" placeholder="Project ID">
+            <mat-error *ngIf="documentForm.get('projectId')?.invalid">Project ID is required.</mat-error>
+          </mat-form-field>
+        </div>
+    
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+  

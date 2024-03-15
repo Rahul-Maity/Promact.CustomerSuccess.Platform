@@ -1,9 +1,12 @@
+using Auth0.AspNetCore.Authentication;
 using Promact.CustomerSuccess.Platform.Data;
 using Serilog;
 using Serilog.Events;
 using Volo.Abp.Data;
 
 namespace Promact.CustomerSuccess.Platform;
+
+
 
 public class Program
 {
@@ -35,6 +38,19 @@ public class Program
         try
         {
             var builder = WebApplication.CreateBuilder(args);
+
+
+            //builder.Services.ConfigureSameSiteNoneCookies();
+         
+          
+            builder.Services.AddAuth0WebAppAuthentication(options =>
+            {
+                options.Domain = builder.Configuration["Auth0:Domain"];
+                options.ClientId = builder.Configuration["Auth0:ClientId"];
+            });
+            builder.Services.AddControllersWithViews();
+           
+
             builder.Host.AddAppSettingsSecretsJson()
                 .UseAutofac()
                 .UseSerilog();
@@ -48,7 +64,12 @@ public class Program
                 builder.Services.AddDataMigrationEnvironment();
             }
             await builder.AddApplicationAsync<PlatformModule>();
+
             var app = builder.Build();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
             await app.InitializeApplicationAsync();
 
             if (IsMigrateDatabase(args))

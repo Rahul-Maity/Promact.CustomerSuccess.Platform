@@ -19,6 +19,12 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         : base(options)
     {
     }
+
+   public DbSet<Stakeholder> Stakeholders { get; set; }
+    public DbSet<RemediationStep>RemediationSteps { get; set; }
+
+    public DbSet<Scope> Scopes { get; set; }
+    public DbSet<AuditHistory>AuditHistories { get; set; }
     public DbSet<ApprovedTeam> ApprovedTeams { get; set; }
     public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
   
@@ -55,8 +61,28 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.ConfigureTenantManagement();
 
         /* Configure your own entities here */
-      
-      
+        builder.Entity<Stakeholder>(Stakeholder =>
+        {
+            Stakeholder.ConfigureByConvention();
+        });
+
+
+        builder.Entity<RemediationStep>(RemediationStep =>
+        {
+            RemediationStep.ConfigureByConvention();
+        });
+
+
+        builder.Entity<Scope>(Scope =>
+        {
+            Scope.ConfigureByConvention();
+        });
+
+
+        builder.Entity<AuditHistory>(AuditHistory =>
+        {
+            AuditHistory.ConfigureByConvention();
+        });
 
         builder.Entity<ClientFeedback>(ClientFeedback =>
         {

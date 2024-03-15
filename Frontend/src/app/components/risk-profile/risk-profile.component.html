@@ -1,0 +1,66 @@
+<div class="form-container">
+    <form [formGroup]="riskProfileForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Project ID</mat-label>
+            <input matInput formControlName="projectId" placeholder="Project ID">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Risk Type</mat-label>
+            <input matInput formControlName="riskType" placeholder="Risk Type"> -->
+            <mat-select formControlName="riskType"  placeholder="Select Risk Type">
+                @for (food of foods; track food) {
+                  <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                }
+              </mat-select>
+          </mat-form-field>
+        </div>
+         
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Severity</mat-label>
+            <input matInput formControlName="severity" placeholder="Severity"> -->
+
+            <mat-select formControlName="severity"  placeholder="Select Severity Type">
+                @for (item of severities; track item) {
+                  <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
+                }
+              </mat-select>
+
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Impact</mat-label>
+            <input matInput formControlName="impact" placeholder="Impact"> -->
+            
+            <mat-select formControlName="impact"  placeholder="Select Impact Type">
+                @for (item of impacts; track item) {
+                  <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
+                }
+              </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Remedial Steps</mat-label>
+            <input matInput formControlName="remedialSteps" placeholder="Remedial Steps">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Closure Date</mat-label>
+            <input matInput formControlName="closureDate" placeholder="Closure Date" [matDatepicker]="closureDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="closureDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #closureDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

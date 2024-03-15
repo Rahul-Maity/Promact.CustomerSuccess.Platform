@@ -1,0 +1,40 @@
+<div class="form-container">
+    <form [formGroup]="versionForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Change Type</mat-label>
+            <input matInput formControlName="changeType" type="number" placeholder="Change Type">
+            <mat-error *ngIf="versionForm.get('changeType')?.invalid">Change Type is required.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Changes</mat-label>
+            <input matInput formControlName="changes" placeholder="Changes">
+            <mat-error *ngIf="versionForm.get('changes')?.invalid">Changes is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Change Reason</mat-label>
+            <input matInput formControlName="changeReason" placeholder="Change Reason">
+            <mat-error *ngIf="versionForm.get('changeReason')?.invalid">Change Reason is required.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Document ID</mat-label>
+            <input matInput formControlName="documentId" placeholder="Document ID">
+            <mat-error *ngIf="versionForm.get('documentId')?.invalid">Document ID is required.</mat-error>
+          </mat-form-field>
+        </div>
+    
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+  

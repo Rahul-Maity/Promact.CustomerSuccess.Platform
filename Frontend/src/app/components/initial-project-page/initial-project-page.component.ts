@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 
 export interface PeriodicElement {
+  id: string;
   name: string;
   position: number;
   description: string;
@@ -28,6 +29,7 @@ export class InitialProjectPageComponent implements OnInit {
   constructor(private projectDataService: ProjectDataService, private changeDetectorRef: ChangeDetectorRef,
   private projectService:ProjectService,private router:Router) { }
   dataSource: PeriodicElement[] = [];
+
   ngOnInit() {
 
 
@@ -39,8 +41,11 @@ export class InitialProjectPageComponent implements OnInit {
     this.projectDataService.projectData$.subscribe((project: Project | null) => {
       if (project) {
         // console.log(project);
+      
+     
        
         const newData: PeriodicElement = {
+          id:project.id||'',
           position: this.dataSource.length + 1,
           name: project.name,
           description: project.description,
@@ -60,7 +65,9 @@ export class InitialProjectPageComponent implements OnInit {
     this.projectService.getAllProjects().subscribe(
       (response: any) => {
         const projects: Project[] = response.items;
+
         this.dataSource = projects.map((project, index) => ({
+          id:project.id||'',
           position: index + 1,
           name: project.name,
           description: project.description,
@@ -74,8 +81,8 @@ export class InitialProjectPageComponent implements OnInit {
     );
   }
 
-  selectProject() {
-    this.router.navigate(['/project-details']);
+  selectProject(projectId: string) {
+    this.router.navigate(['/project-details',projectId]);
   }
 
 

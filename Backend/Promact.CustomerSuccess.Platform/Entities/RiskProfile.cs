@@ -9,8 +9,9 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public Guid ProjectId { get; set; }
         public RiskType RiskType { get; set; }
         public RiskSeverity Severity { get; set; }
-        public RiskImpact Impact { get; set; }        
-        public virtual ICollection<RemediationStep>? RemediationSteps { get; set; }
+        public RiskImpact Impact { get; set; }
+        public required string RemedialSteps { get; set; }
+        public DateTime clousreDate{ get; set; }
         public virtual Project? Project { get; set; }
         public override object?[] GetKeys()
         {

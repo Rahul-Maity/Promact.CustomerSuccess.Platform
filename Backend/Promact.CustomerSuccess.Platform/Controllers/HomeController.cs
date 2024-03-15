@@ -8,5 +8,7 @@ public class HomeController : AbpController
     public ActionResult Index()
     {
         return Redirect("~/swagger");
+        //return Redirect("http://localhost:4200/");
+
     }
 }

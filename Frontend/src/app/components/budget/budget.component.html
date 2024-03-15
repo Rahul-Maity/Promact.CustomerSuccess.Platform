@@ -1,0 +1,65 @@
+<div class="form-container">
+    <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Type</mat-label>
+            <!-- <input matInput formControlName="type" placeholder="Type">
+            <mat-error *ngIf="budgetForm.get('type')?.invalid">Type is required.</mat-error> -->
+            <mat-select formControlName="type">
+                @for (food of foods; track food) {
+                  <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                }
+              </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Duration in Months</mat-label>
+            <input matInput formControlName="durationInMonths" type="number" placeholder="Duration in Months">
+            <mat-error *ngIf="budgetForm.get('durationInMonths')?.invalid">Duration in Months is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Contract Duration</mat-label>
+            <input matInput formControlName="contractDuration" type="number" placeholder="Contract Duration">
+            <mat-error *ngIf="budgetForm.get('contractDuration')?.invalid">Contract Duration is required.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Budgeted Hours</mat-label>
+            <input matInput formControlName="budgetedHours" type="number" placeholder="Budgeted Hours">
+            <mat-error *ngIf="budgetForm.get('budgetedHours')?.invalid">Budgeted Hours is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Budgeted Cost</mat-label>
+            <input matInput formControlName="budgetedCost" type="number" placeholder="Budgeted Cost">
+            <mat-error *ngIf="budgetForm.get('budgetedCost')?.invalid">Budgeted Cost is required.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Currency</mat-label>
+            <input matInput formControlName="currency" placeholder="Currency">
+            <mat-error *ngIf="budgetForm.get('currency')?.invalid">Currency is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Project ID</mat-label>
+            <input matInput formControlName="projectId" placeholder="Project ID">
+            <mat-error *ngIf="budgetForm.get('projectId')?.invalid">Project ID is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

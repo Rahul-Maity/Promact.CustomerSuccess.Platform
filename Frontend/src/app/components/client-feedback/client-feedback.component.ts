@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FeedbackService } from '../../shared/feedback.service';
 import { Feedback } from '../../models/Feedback';
@@ -9,14 +9,14 @@ import { Feedback } from '../../models/Feedback';
 })
 export class ClientFeedbackComponent implements OnInit {
 
-
+  @Input() projectId!: string;
   feedbackForm !: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService) { }
 
   ngOnInit(): void {
     this.feedbackForm = this.formBuilder.group({
-      projectId: ['', Validators.required],
+      projectId: [this.projectId, Validators.required],
       feedbackType: ['', Validators.required],
       dateReceived: ['', Validators.required],
       detailedFeedback: ['', Validators.required],
@@ -39,6 +39,7 @@ export class ClientFeedbackComponent implements OnInit {
         (response) => {
           console.log('Feedback created successfully:', response);
           this.feedbackForm.reset();
+          this.feedbackForm.patchValue({ projectId: this.projectId }); 
         },
         (error) => {
           console.error('Error creating feedback:', error);

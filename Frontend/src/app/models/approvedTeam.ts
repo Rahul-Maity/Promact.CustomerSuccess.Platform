@@ -5,4 +5,5 @@ export interface ApprovedTeam {
     role: string;
     availabilityPercentage: number;
     duration: number;
-  }
+}
+  

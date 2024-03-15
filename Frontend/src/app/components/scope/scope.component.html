@@ -1,0 +1,40 @@
+<div class="form-container">
+    <form [formGroup]="scopeForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Included Items</mat-label>
+            <input matInput formControlName="includedItems" placeholder="Included Items">
+            <mat-error *ngIf="scopeForm.get('includedItems')?.invalid">Included Items is required.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Excluded Items</mat-label>
+            <input matInput formControlName="excludedItems" placeholder="Excluded Items">
+            <mat-error *ngIf="scopeForm.get('excludedItems')?.invalid">Excluded Items is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Project Scope</mat-label>
+            <input matInput formControlName="additionalNotes" placeholder="Additional Notes">
+            <mat-error *ngIf="scopeForm.get('additionalNotes')?.invalid">Additional Notes is required.</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Project ID</mat-label>
+            <input matInput formControlName="projectId" placeholder="Project ID">
+            <mat-error *ngIf="scopeForm.get('projectId')?.invalid">Project ID is required.</mat-error>
+          </mat-form-field>
+        </div>
+    
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+  

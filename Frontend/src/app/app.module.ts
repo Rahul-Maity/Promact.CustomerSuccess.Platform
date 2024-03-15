@@ -34,11 +34,25 @@ import { MomsMeetingComponent } from './components/moms-meeting/moms-meeting.com
 import { CommonModule } from '@angular/common';
 import { ParticularProjectPageComponent } from './components/particular-project-page/particular-project-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import { BudgetComponent } from './components/budget/budget.component';
+import { AuditComponent } from './components/audit/audit.component';
+import { DocumentComponent } from './components/document/document.component';
+import { VersionComponent } from './components/version/version.component';
+import { ScopeComponent } from './components/scope/scope.component';
+import { EscalationComponent } from './components/escalation/escalation.component';
+import { StakeholderComponent } from './components/stakeholder/stakeholder.component';
+import { PhaseMilestoneComponent } from './components/phase-milestone/phase-milestone.component';
+import { NgToastModule } from 'ng-angular-popup';
 
+import { AuthModule } from '@auth0/auth0-angular';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { SprintComponent } from './components/sprint/sprint.component';
+import { RiskProfileComponent } from './components/risk-profile/risk-profile.component';
 const routes: Routes = [
   { path: '', component: InitialProjectPageComponent },
   { path: 'all-projects', component: InitialProjectPageComponent },
-  { path: 'project-details', component: ParticularProjectPageComponent },
+  { path: 'project-details/:projectId', component: ParticularProjectPageComponent },
 ];
 
 @NgModule({
@@ -54,7 +68,19 @@ const routes: Routes = [
     ClientFeedbackComponent,
     ProjectUpdateComponent,
     MomsMeetingComponent,
-    ParticularProjectPageComponent
+    ParticularProjectPageComponent,
+    BudgetComponent,
+    AuditComponent,
+    DocumentComponent,
+    VersionComponent,
+    ScopeComponent,
+    EscalationComponent,
+    StakeholderComponent,
+    PhaseMilestoneComponent,
+    LoginButtonComponent,
+    LogoutButtonComponent,
+    SprintComponent,
+    RiskProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +102,17 @@ const routes: Routes = [
     MatNativeDateModule,
     HttpClientModule,
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgToastModule,
+    AuthModule.forRoot({
+      domain: 'dev-sszm8jsre62ahs7a.us.auth0.com',
+      clientId: '7zdIYhM9GtI7NDh7rvYvvOZNPMr7BPZ6',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
+
+   
 
     
   

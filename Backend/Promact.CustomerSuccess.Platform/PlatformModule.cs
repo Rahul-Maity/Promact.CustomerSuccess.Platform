@@ -317,6 +317,21 @@ public class PlatformModule : AbpModule
             });
         });
     }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowLocalhost4200",
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+        });
+
+        // Other service configurations...
+    }
 
     private void ConfigureDataProtection(ServiceConfigurationContext context)
     {

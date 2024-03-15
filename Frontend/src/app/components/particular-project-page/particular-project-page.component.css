@@ -1,7 +1,8 @@
 .title{
-    margin: 12px 20px;
+    margin: 12px 50px;
     h2{
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif */
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
   }
 
@@ -13,3 +14,152 @@
     width: 90%;
     margin: auto    ;
 }
+
+
+.header-container{
+    display: flex;
+.export-pdf{
+    margin: 15px 0;
+    /* color: cornflowerblue; */
+    button{
+        background-color: #4681f4;
+        color: white;
+        border: none;
+        padding: 5px;
+        border-radius: 4px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        cursor: pointer;
+
+    }
+}
+}
+
+.custom-label {
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family:'Courier New', Courier, monospace;
+    letter-spacing: normal;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+table {
+
+ 
+      
+    width: 400px;
+    margin-left: 24px;
+   }
+   .mat-elevation-z8 {
+     /* box-shadow: none; */
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+   }
+   .title{
+     background-color:  #dee2e6;;
+     width: fit-content;
+     margin-left: 28px;
+     margin-top: 10px;
+     h3{
+         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+         
+  
+     }
+   }
+   .project-section{
+    margin-top: 20px;
+    margin-left: 33px;
+ 
+     width: 88%;
+     th{
+         font-weight: bold;
+         font-family:Arial, Helvetica, sans-serif;
+     }
+     td{
+         font-family:Verdana, Geneva, Tahoma, sans-serif;
+     }
+    
+   }
+ 
+   .element-name{
+     cursor: pointer;
+     
+   }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ table{
+   th{
+     background-color: #5aa9e6;
+     color: white;
+   }
+   span{
+     letter-spacing: 1px;
+     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   }
+ }

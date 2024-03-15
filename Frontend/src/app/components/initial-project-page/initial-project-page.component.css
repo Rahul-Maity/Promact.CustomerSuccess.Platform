@@ -4,6 +4,14 @@ mat-card{
     width: 150px;
     text-align: center;
     justify-content: center;
+    background-color:  #8d99ae;
+    color: white;
+    box-shadow: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 1px;
+    mat-card-title{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
 }
 .card-section
 {
@@ -11,12 +19,13 @@ mat-card{
     align-items: center;
     padding: 10px;
     display: flex;
-    gap: 10px
+    gap: 15px
     ;
 
 }
 
 table {
+
  
       
    width: 400px;
@@ -29,9 +38,12 @@ table {
   .title{
     background-color:  #dee2e6;;
     width: fit-content;
-    margin-left: 24px;
-    h2{
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 28px;
+    margin-top: 10px;
+    h3,h4{
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        
+ 
     }
   }
   .project-section{
@@ -51,3 +63,52 @@ table {
     cursor: pointer;
     
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+table{
+  th{
+    background-color: #5aa9e6;
+    color: white;
+  }
+  span{
+    letter-spacing: 1px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+}
