@@ -129,6 +129,9 @@ After locating the desired project in the table, **click** on its name, You will
 
 This project leverages Angular and TypeScript for frontend development, alongside the Angular Material UI library for enhanced user interface components. On the backend, it utilizes the ABP.IO framework, implemented using the C# programming language.
 
+## Third-party Integrations
+- Implemented "`Auth0 authentication"` for seamless login and logout functionalities. Utilizing the single-page application (SPA) architecture, users can securely access the system, enhancing both user experience and data security.
+
 ### Deploying the application
 
 Deploying an ABP application is not different than deploying any .NET or ASP.NET Core application. However, there are some topics that you should care about when you are deploying your applications. You can check ABP's [Deployment documentation](https://docs.abp.io/en/abp/latest/Deployment/Index) before deploying your application.
