@@ -211,57 +211,255 @@ namespace Promact.CustomerSuccess.Platform.Controllers
         }
         private string getEmailBodyPhaseMilestone(Stakeholder stakeholder, PhaseMilestone phaseMileStoneData)
         {
-            return $"<p>Hello Mr./Ms. {stakeholder.Name}</p>" +
-                $"<p>New Phase Milestone for this projectid: {phaseMileStoneData.ProjectId}</p>" +
-
-                     $"<p>Title: {phaseMileStoneData.Title}</p>" +
-                      $"<p>StartDate: {phaseMileStoneData.StartDate}</p>" +
-                       $"<p>End Date: {phaseMileStoneData.EndDate}</p>" +
-                        $"<p>Status: {phaseMileStoneData.Status}</p>" +
-                         $"<p>Comments: {phaseMileStoneData.Comments}</p>" 
+            
 
 
-                 ;
+
+
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello Mr./Ms. {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New Phase Milestone for project ID: {phaseMileStoneData.ProjectId}</p>
+                    <p><strong>Title:</strong> {phaseMileStoneData.Title}</p>
+                    <p><strong>Start Date:</strong> {phaseMileStoneData.StartDate}</p>
+                    <p><strong>End Date:</strong> {phaseMileStoneData.EndDate}</p>
+                    <p><strong>Status:</strong> {phaseMileStoneData.Status}</p>
+                    <p><strong>Comments:</strong> {phaseMileStoneData.Comments}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
 
         private string getEmailBodyProjectScope(Stakeholder stakeholder, Scope scopeData)
         {
-            return $"<p>Hello Mr./Ms. {stakeholder.Name}</p>" +
-                $"<p>New Project scope changes for this projectid: {scopeData.ProjectId}</p>" +
+           
 
-                     $"<p>IncludedItems: {scopeData.IncludedItems}</p>" +
-                      $"<p>ExcludedItems: {scopeData.ExcludedItems}</p>" +
-                                $"<p>AdditionalNotes: {scopeData.AdditionalNotes}</p>"
 
-                 ;
+
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello Mr./Ms. {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New Project scope changes for project ID: {scopeData.ProjectId}</p>
+                    <p><strong>Included Items:</strong> {scopeData.IncludedItems}</p>
+                    <p><strong>Excluded Items:</strong> {scopeData.ExcludedItems}</p>
+                    <p><strong>Additional Notes:</strong> {scopeData.AdditionalNotes}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
 
 
         private string getEmailBodyDocumentVersion(Stakeholder stakeholder, DocumentVersion versionData)
         {
-            return $"<p>Hello Mr./Ms. {stakeholder.Name}</p>" +
-                $"<p>New Project Document Version Updated : {versionData.DocumentId}</p>" +
+           
 
-                     $"<p>ChangeType: {versionData.ChangeType}</p>" +
-                      $"<p>Changes: {versionData.Changes}</p>" +
-                                $"<p>ChangeReason: {versionData.ChangeReason}</p>"
 
-                 ;
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello Mr./Ms. {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New Project Document Version Updated for Document ID: {versionData.DocumentId}</p>
+                    <p><strong>Change Type:</strong> {versionData.ChangeType}</p>
+                    <p><strong>Changes:</strong> {versionData.Changes}</p>
+                    <p><strong>Change Reason:</strong> {versionData.ChangeReason}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
 
         private string getEmailBodyProjectDocument(Stakeholder stakeholder, Document documentData)
         {
-            return $"<p>Hello Mr./Ms. {stakeholder.Name}</p>" +
-                $"<p>New Project Document Updated for project ID: {documentData.ProjectId}</p>" +
+          
 
-                     $"<p>Name: {documentData.Name}</p>" +
-                      $"<p>Description: {documentData.Description}</p>"+
-                                $"<p>Url: {documentData.Url}</p>" 
 
-                 ;
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello Mr./Ms. {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New Project Document Updated for project ID: {documentData.ProjectId}</p>
+                    <p><strong>Name:</strong> {documentData.Name}</p>
+                    <p><strong>Description:</strong> {documentData.Description}</p>
+                    <p><strong>Url:</strong> {documentData.Url}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
 
@@ -269,45 +467,140 @@ namespace Promact.CustomerSuccess.Platform.Controllers
 
         private string getEmailBodyProjectUpdate(Stakeholder stakeholder, ProjectUpdate projectUpdateData)
         {
-            return $"<p>Hello Mr./Ms. {stakeholder.Name}</p>" +
-                $"<p>New Project Update for project ID: {projectUpdateData.ProjectId}</p>" +
-                     
-                     $"<p>Date: {projectUpdateData.Date}</p>" +
-                      $"<p>GeneralUpdates: {projectUpdateData.GeneralUpdates}</p>" 
-                   
+           
 
-                 ;
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello Mr./Ms. {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New Project Update for project ID: {projectUpdateData.ProjectId}</p>
+                    <p><strong>Date:</strong> {projectUpdateData.Date}</p>
+                    <p><strong>General Updates:</strong> {projectUpdateData.GeneralUpdates}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
 
 
         private string getEmailBodyProjectResource(Stakeholder stakeholder, ProjectResources resourceAllocationData)
         {
-            return $"<p>Hello : {stakeholder.Name}</p>" +
-                $"<p>New Project resource for project ID: {resourceAllocationData.ProjectId}</p>" +
-                     //$"<p>FeedbackType: {ClientFeedbackData.FeedbackType}</p>" +
-                     $"<p>AllocationPercentage : {resourceAllocationData.AllocationPercentage}</p>" +
-                     $"<p>Start date: {resourceAllocationData.Start}</p>" +
-                      $"<p>End Date: {resourceAllocationData.End}</p>" +
-                      $"<p>role: {resourceAllocationData.Role}</p>"
+          
 
 
-                 ;
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello Mr./Ms. {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New Project resource for project ID: {resourceAllocationData.ProjectId}</p>
+                    <p><strong>Allocation Percentage:</strong> {resourceAllocationData.AllocationPercentage}</p>
+                    <p><strong>Start Date:</strong> {resourceAllocationData.Start}</p>
+                    <p><strong>End Date:</strong> {resourceAllocationData.End}</p>
+                    <p><strong>Role:</strong> {resourceAllocationData.Role}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
 
         private string getEmailBodyClientFeedback(Stakeholder stakeholder, ClientFeedback FeedbackData)
         {
-            return $"<p>Hello : {stakeholder.Name}</p>" +
+            return $"<p>Hello Mr./Ms. {stakeholder.Name}</p>" +
                 $"<p>New Client Feedback for project ID: {FeedbackData.ProjectId}</p>" +
-                     //$"<p>FeedbackType: {ClientFeedbackData.FeedbackType}</p>" +
+
                      $"<p>DateReceived : {FeedbackData.DateReceived}</p>" +
                      $"<p>Detailed Feedback: {FeedbackData.DetailedFeedback}</p>" +
                       $"<p>ActionTaken: {FeedbackData.ActionTaken}</p>" +
-                      $"<p>ClosureDate: {FeedbackData.ClosureDate}</p>" 
+                      $"<p>ClosureDate: {FeedbackData.ClosureDate}</p>";
 
 
-                 ;
+
         }
 
 
@@ -315,53 +608,255 @@ namespace Promact.CustomerSuccess.Platform.Controllers
 
         private string getEmailBodyMeeting(Stakeholder stakeholder, MeetingMinute MeetingData)
         {
-            return $"<p>Hello : {stakeholder.Name}</p>" +
-                $"<p>New Meeting Sheduled for project ID: {MeetingData.ProjectId}</p>" +
-                     $"<p>MeetingDate: {MeetingData.MeetingDate}</p>" +
-                     $"<p>MoMLink : {MeetingData.MoMLink}</p>" +
-                     $"<p>Comment: {MeetingData.Comments}</p>" 
-                   
-                 ;
+           
+
+
+
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New Meeting Scheduled for project ID: {MeetingData.ProjectId}</p>
+                    <p><strong>Meeting Date:</strong> {MeetingData.MeetingDate}</p>
+                    <p><strong>MoM Link:</strong> {MeetingData.MoMLink}</p>
+                    <p><strong>Comment:</strong> {MeetingData.Comments}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
 
 
         private string getEmailBodyBudget(Stakeholder stakeholder, ProjectBudget BudgetData)
         {
-            return $"<p>Hello : {stakeholder.Name}</p>" +
-                $"<p>New Budget has been created for project ID: {BudgetData.ProjectId}</p>" +
-                     $"<p>Type: {BudgetData.Type}</p>" +
-                     $"<p>Budgeted Hours : {BudgetData.BudgetedHours}</p>" +
-                     $"<p>Cost in Budget: {BudgetData.BudgetedCost}</p>" +
-                     $"<p>Currencyy: {BudgetData.Currency}</p>" +
-                     $"<p>Duration in months: {BudgetData.DurationInMonths}</p>"
-                 ;
+            
+
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New Budget has been created for project ID: {BudgetData.ProjectId}</p>
+                    <p><strong>Type:</strong> {BudgetData.Type}</p>
+                    <p><strong>Budgeted Hours:</strong> {BudgetData.BudgetedHours}</p>
+                    <p><strong>Cost in Budget:</strong> {BudgetData.BudgetedCost}</p>
+                    <p><strong>Currency:</strong> {BudgetData.Currency}</p>
+                    <p><strong>Duration in months:</strong> {BudgetData.DurationInMonths}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
         private string getEmailBody(Stakeholder stakeholder, AuditHistory auditData)
         {
-            return $"<p>Hello : {stakeholder.Name}</p>" +
-                $"<p>New audit has been created for project ID: {auditData.ProjectId}</p>" +
-                     $"<p>Date of Audit: {auditData.DateOfAudit}</p>" +
-                     $"<p>Reviewed By: {auditData.ReviewedBy}</p>" +
-                     $"<p>Status: {auditData.Status}</p>" +
-                     $"<p>Reviewed Section: {auditData.ReviewedSection}</p>" +
-                     $"<p>Comment Queries: {auditData.CommentQueries}</p>" +
-                     $"<p>Action Item: {auditData.ActionItem}</p>";
+            
+
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New audit has been created for project ID: {auditData.ProjectId}</p>
+                    <p><strong>Date of Audit:</strong> {auditData.DateOfAudit}</p>
+                    <p><strong>Reviewed By:</strong> {auditData.ReviewedBy}</p>
+                    <p><strong>Status:</strong> {auditData.Status}</p>
+                    <p><strong>Reviewed Section:</strong> {auditData.ReviewedSection}</p>
+                    <p><strong>Comment Queries:</strong> {auditData.CommentQueries}</p>
+                    <p><strong>Action Item:</strong> {auditData.ActionItem}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
 
 
         private string getEmailBodyApprovedTeam(Stakeholder stakeholder, ApprovedTeam ApprovedData)
         {
-            return $"<p>Hello : {stakeholder.Name}</p>" +
-                $"<p>New audit has been created for project ID: {ApprovedData.ProjectId}</p>" +
-                     $"<p>Phase: {ApprovedData.Phase}</p>" +
-                     $"<p>NumberOfResources : {ApprovedData.NumberOfResources}</p>" +
-                     $"<p>Role: {ApprovedData.Role}</p>" +
-                     $"<p>AvailabilityPercentage Section: {ApprovedData.AvailabilityPercentage}</p>" +
-                     $"<p>Duration: {ApprovedData.Duration}</p>" 
-                 ;
+           
+
+            return $@"
+        <html>
+        <head>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                }}
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: #f9f9f9;
+                }}
+                .header {{
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }}
+                .content {{
+                    padding: 20px;
+                    background-color: #fff;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }}
+                .footer {{
+                    text-align: center;
+                    margin-top: 20px;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class='container'>
+                <div class='header'>
+                    <h1>Hello {stakeholder.Name}</h1>
+                </div>
+                <div class='content'>
+                    <p>New audit has been created for project ID: {ApprovedData.ProjectId}</p>
+                    <p><strong>Phase:</strong> {ApprovedData.Phase}</p>
+                    <p><strong>Number of Resources:</strong> {ApprovedData.NumberOfResources}</p>
+                    <p><strong>Role:</strong> {ApprovedData.Role}</p>
+                    <p><strong>Availability Percentage:</strong> {ApprovedData.AvailabilityPercentage}</p>
+                    <p><strong>Duration:</strong> {ApprovedData.Duration}</p>
+                    <p>Thanks and Regards,</p>
+                    <p><em>Promact Infotech Pvt Ltd</em></p>
+                </div>
+                <div class='footer'>
+                    <p>&copy; {DateTime.Now.Year} Promact Infotech Pvt Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>";
         }
 
         private void SendEmail(string userEmail, string subject, string body)

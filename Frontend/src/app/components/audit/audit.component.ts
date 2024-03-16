@@ -5,6 +5,7 @@ import { Audit } from '../../models/Audit';
 import { HttpClient } from '@angular/common/http';
 import { StakeholderService } from '../../shared/stakeholder.service';
 import { Stakeholder } from '../../models/Stakeholder';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-audit',
   templateUrl: './audit.component.html',
@@ -15,7 +16,7 @@ export class AuditComponent implements OnInit {
   stakeHolders: Stakeholder[]= [];
 
   auditForm !: FormGroup;
-  constructor(private formBuilder: FormBuilder, private auditService: AuditService,private http:HttpClient,private stakeholderService:StakeholderService) { }
+  constructor(private formBuilder: FormBuilder, private auditService: AuditService,private http:HttpClient,private stakeholderService:StakeholderService,private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.auditForm = this.formBuilder.group({
@@ -47,6 +48,7 @@ export class AuditComponent implements OnInit {
       this.auditService.createAudit(auditData).subscribe(
         (response) => {
           console.log('Audit created successfully:', response);
+          this.toast.success({ detail: "Audit Created", summary: 'Refresh to see the changes', duration: 3000 });
 
 
           this.stakeholderService.getAllStakeholders().subscribe(
@@ -58,6 +60,7 @@ export class AuditComponent implements OnInit {
               
           this.sendEmail(this.stakeHolders,auditData).subscribe(
             () => {
+              this.toast.success({ detail: "Success", summary: 'Email sent to all stakeholders', duration: 3000 });
               console.log('email sent successfully');
               this.auditForm.reset();
               this.auditForm.patchValue({ projectId: this.projectId });
