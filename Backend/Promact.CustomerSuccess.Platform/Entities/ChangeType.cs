@@ -2,5 +2,8 @@
 {
     public enum ChangeType
     {
+        TechStack,
+        Domain,
+        Purpose
     }
 }

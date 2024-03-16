@@ -49,10 +49,11 @@ import { LoginButtonComponent } from './components/login-button/login-button.com
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { SprintComponent } from './components/sprint/sprint.component';
 import { RiskProfileComponent } from './components/risk-profile/risk-profile.component';
+import { ProjectDescriptionComponent } from './components/project-description/project-description.component';
 const routes: Routes = [
   { path: '', component: InitialProjectPageComponent },
   { path: 'all-projects', component: InitialProjectPageComponent },
-  { path: 'project-details/:projectId', component: ParticularProjectPageComponent },
+  { path: 'project-details/:projectId/:projectName', component: ParticularProjectPageComponent },
 ];
 
 @NgModule({
@@ -80,7 +81,8 @@ const routes: Routes = [
     LoginButtonComponent,
     LogoutButtonComponent,
     SprintComponent,
-    RiskProfileComponent
+    RiskProfileComponent,
+    ProjectDescriptionComponent
   ],
   imports: [
     BrowserModule,

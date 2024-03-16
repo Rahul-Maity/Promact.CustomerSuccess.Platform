@@ -3,6 +3,7 @@ import { Project } from '../../models/project';
 import { ProjectDataService } from '../../shared/project-data.service';
 import { ProjectService } from '../../shared/project.service';
 import { Router } from '@angular/router';
+import { ProjectNameService } from '../../shared/project-name.service';
 
 
 export interface PeriodicElement {
@@ -51,6 +52,12 @@ export class InitialProjectPageComponent implements OnInit {
           description: project.description,
           Manager: 'Dipa Majumdar' // You can set the manager name as needed
         };
+
+
+
+     
+
+
         console.log(newData);
         this.dataSource = [...this.dataSource, newData];
         console.log(this.dataSource);
@@ -73,6 +80,7 @@ export class InitialProjectPageComponent implements OnInit {
           description: project.description,
           Manager: 'Dipa Majumdar' // You can set the manager name as needed
         }));
+
         this.changeDetectorRef.detectChanges();
       },
       (error) => {
@@ -81,8 +89,8 @@ export class InitialProjectPageComponent implements OnInit {
     );
   }
 
-  selectProject(projectId: string) {
-    this.router.navigate(['/project-details',projectId]);
+  selectProject(projectId: string,projectName:string) {
+    this.router.navigate(['/project-details',projectId,projectName]);
   }
 
 

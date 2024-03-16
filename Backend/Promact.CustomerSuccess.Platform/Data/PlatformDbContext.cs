@@ -20,7 +20,9 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     {
     }
 
-   public DbSet<Stakeholder> Stakeholders { get; set; }
+
+    public DbSet<ProjectDescription> ProjectDescriptions{ get; set; }
+    public DbSet<Stakeholder> Stakeholders { get; set; }
     public DbSet<RemediationStep>RemediationSteps { get; set; }
 
     public DbSet<Scope> Scopes { get; set; }
@@ -61,6 +63,11 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.ConfigureTenantManagement();
 
         /* Configure your own entities here */
+        builder.Entity<ProjectDescription>(ProjectDescription =>
+        {
+            ProjectDescription.ConfigureByConvention();
+        });
+
         builder.Entity<Stakeholder>(Stakeholder =>
         {
             Stakeholder.ConfigureByConvention();

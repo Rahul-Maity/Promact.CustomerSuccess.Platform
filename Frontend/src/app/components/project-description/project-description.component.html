@@ -1,0 +1,43 @@
+<div class="form-container">
+    <form [formGroup]="projectDescriptionForm" (ngSubmit)="onSubmit()">
+      <div class="outer-form-container">
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Project ID</mat-label>
+            <input matInput formControlName="projectId" placeholder="Project ID">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input   matInput formControlName="description" placeholder="Description">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>Tech Stack</mat-label>
+            <input matInput formControlName="techStack" placeholder="Tech Stack"> -->
+            <mat-select formControlName="techStack" placeholder="Tech Stack">
+                @for (food of foods; track food) {
+                  <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                }
+              </mat-select>
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Detailed Timeline</mat-label>
+            <input matInput formControlName="detailedTimeline" placeholder="provide link here">
+            <!-- Add error message handling if needed -->
+          </mat-form-field>
+        </div>
+  
+        <div class="inner-form-container">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

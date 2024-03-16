@@ -13,8 +13,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Promact.CustomerSuccess.Platform.Migrations
 {
     [DbContext(typeof(PlatformDbContext))]
-    [Migration("20240313191810_initial")]
-    partial class initial
+    [Migration("20240315212337_initial migration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -9,6 +9,10 @@ public class PlatformAutoMapperProfile : Profile
     public PlatformAutoMapperProfile()
     {
         /* Create your AutoMapper object mappings here */
+        CreateMap<CreateProjectDescriptionDto, ProjectDescription>();
+        CreateMap<UpdateProjectDescriptionDto, ProjectDescription>();
+        CreateMap<ProjectDescription, ProjectDescriptionDto>().ReverseMap();
+
         CreateMap<CreateStakeholderDto, Stakeholder>();
         CreateMap<UpdateStakeholderDto, Stakeholder>();
         CreateMap<Stakeholder, StakeholderDto>().ReverseMap();

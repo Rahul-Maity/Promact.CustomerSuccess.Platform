@@ -23,9 +23,9 @@ export class ProjectResourcesComponent implements OnInit{
   ngOnInit(): void {
     this.resourceAllocationForm = this.formBuilder.group({
       projectId: [this.projectId, Validators.required],
-      allocationPercentage: [0, Validators.required],
-      start: [new Date(), Validators.required],
-      end: [new Date(), Validators.required],
+      allocationPercentage: ['', Validators.required],
+      start: ['', Validators.required],
+      end: ['', Validators.required],
       role: ['', Validators.required]
     });
   }
@@ -43,15 +43,11 @@ export class ProjectResourcesComponent implements OnInit{
       this.resourceAllocationService.createResourceAllocation(resourceAllocationData).subscribe(
         (response) => {
           console.log('Resource allocation created successfully:', response);
-          // Handle success
-          // this.resourceAllocationForm.reset();
-          // this.resourceAllocationForm.patchValue({ projectId: this.projectId }); 
-
-
+            // Handle success
 
 
           this.toast.success({ detail: "Resource data created", summary: 'Refresh to see the changes', duration: 3000 });
-   
+
 
 
           this.stakeholderService.getAllStakeholders().subscribe(
@@ -63,11 +59,12 @@ export class ProjectResourcesComponent implements OnInit{
               console.log('filtered stakeholders',this.stakeHolders);
               this.sendEmail(this.stakeHolders, resourceAllocationData).subscribe(
                 () => {
+                  this.resourceAllocationForm.reset();
+                  this.resourceAllocationForm.patchValue({ projectId: this.projectId });
                   console.log('email sent successfully');
                   
           this.toast.success({ detail: "Success",summary:'Email sent to all stakeholders',duration: 3000 });
-                  this.resourceAllocationForm.reset();
-                  this.resourceAllocationForm.patchValue({ projectId: this.projectId });
+                
 
                 },
                 (error) => {
@@ -90,10 +87,13 @@ export class ProjectResourcesComponent implements OnInit{
         },
         (error) => {
           console.error('Error creating resource allocation:', error);
+          
+          this.toast.error({ detail: "Error", summary: 'Error creating resource allocation', duration: 3000 });
           // Handle error
         }
       );
     } else {
+      this.toast.error({ detail: "Error", summary: 'Invalid form', duration: 3000 });
       console.log('Form invalid');
     }
   }

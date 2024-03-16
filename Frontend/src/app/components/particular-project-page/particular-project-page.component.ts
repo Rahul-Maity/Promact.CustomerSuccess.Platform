@@ -21,6 +21,9 @@ import { Stakeholder } from '../../models/Stakeholder';
 import { StakeholderService } from '../../shared/stakeholder.service';
 import { StakeholderDataService } from '../../shared/stakeholder-data.service';
 import { ApprovedDataService } from '../../shared/approved-data.service';
+import { ResourceDataService } from '../../shared/resource-data.service';
+import { FeedbackDataService } from '../../shared/feedback-data.service';
+import { MeetingDataService } from '../../shared/meeting-data.service';
 
 
 
@@ -40,9 +43,33 @@ export interface PeriodicElementApproved {
   role: string;
   availabilityPercentage: number;
 }
+export interface PeriodicElementResource {
+
+  allocationPercentage: number;
+  start: Date;
+  end: Date;
+  role: string;
+}
+
+export interface PeriodicElementClientFeedback {
+
+  // projectId: string;
+  // feedbackType: number;
+  feedbackType: string;
+  dateReceived: Date;
+  detailedFeedback: string;
+  actionTaken: string;
+}
 
 
 
+export interface PeriodicElementMomsMeeting {
+
+  // projectId: string;
+  meetingDate: Date;
+  moMLink: string;
+  comments: string;
+}
 
 
 
@@ -51,21 +78,18 @@ export interface PeriodicElementApproved {
   templateUrl: './particular-project-page.component.html',
   styleUrl: './particular-project-page.component.css'
 })
-  
-  
-  
-  
-  
 
-  
-  
-  
-  
+
+
+
 export class ParticularProjectPageComponent implements OnInit {
 
 
   displayedColumns: string[] = ['title', 'name', 'contact'];
-  displayedColumnsApproved: string[] = ['phase', 'numberOfResources', 'role','availabilityPercentage'];
+  displayedColumnsApproved: string[] = ['phase', 'numberOfResources', 'role', 'availabilityPercentage'];
+  displayedColumnsResource: string[] = ['allocationPercentage', 'start', 'end', 'role'];
+  displayedColumnsClientFeedback: string[] = ['feedbackType', 'dateReceived', 'detailedFeedback', 'actionTaken'];
+  displayedColumnsMomsMeeting: string[] = ['meetingDate', 'moMLink', 'comments'];
 
 
 
@@ -82,42 +106,98 @@ export class ParticularProjectPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private approvedTeamService: ApprovedTeamService,
     private resourceAllocationService: ResourceAllocationService, private feedbackService: FeedbackService,
-    private projectUpdateService: ProjectUpdateService, private budgetService: BudgetService, private meetingServics:MeetingService,private auditService:AuditService,private stakeService:StakeholderService,private changeDetectorRef:ChangeDetectorRef,private stakeDataService:StakeholderDataService,private approvedDataService:ApprovedDataService) { }
- 
+    private projectUpdateService: ProjectUpdateService, private budgetService: BudgetService, private meetingServics: MeetingService, private auditService: AuditService, private stakeService: StakeholderService, private changeDetectorRef: ChangeDetectorRef, private stakeDataService: StakeholderDataService, private approvedDataService: ApprovedDataService, private resourceDataService: ResourceDataService, private feedbackDataService: FeedbackDataService,private meetingDataService:MeetingDataService) { }
 
-  
-  
-  
+
+
+
+
   dataSource: PeriodicElement[] = [];
   dataSourceApproved: PeriodicElementApproved[] = [];
-  
+  dataSourceResource: PeriodicElementResource[] = [];
+  dataSourceClientFeedback: PeriodicElementClientFeedback[] = [];
+  dataSourceMomsMeeting: PeriodicElementMomsMeeting[] = [];
 
 
 
-  
+  projectName: string = '';
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.projectId = params['projectId'];
+      this.projectName = params['projectName'];
 
     })
-  
+
     this.loadStakeholder();
     this.loadApprovedTeam();
+    this.loadResource();
+    this.loadClientFeedback();
+    this.loadMomsMeeting();
+
+    this.meetingDataService.MeetingDataData$.subscribe((momsMeeting: Meeting | null) => {
+      if (momsMeeting) {
+        // console.log(project);
+
+
+
+        const newData: PeriodicElementMomsMeeting = {
+          meetingDate: momsMeeting.meetingDate,
+          moMLink: momsMeeting.moMLink,
+          comments: momsMeeting.comments
+
+
+
+        };
+        this.dataSourceMomsMeeting = [...this.dataSourceMomsMeeting, newData];
+        this.changeDetectorRef.detectChanges();
+      }
+    })
+
+
+
+    this.feedbackDataService.FeedbackDataData$.subscribe((clientFeedback: Feedback | null) => {
+      if (clientFeedback) {
+        // console.log(project);
+
+
+
+        const newData: PeriodicElementClientFeedback = {
+
+
+          feedbackType: clientFeedback.feedbackType,
+          dateReceived: clientFeedback.dateReceived,
+          detailedFeedback: clientFeedback.detailedFeedback,
+          actionTaken: clientFeedback.actionTaken
+
+
+
+
+        };
+        // console.log(newData);
+        this.dataSourceClientFeedback = [...this.dataSourceClientFeedback, newData];
+        // console.log(this.dataSource);
+        this.changeDetectorRef.detectChanges();
+      }
+    })
+
+
+
 
     this.approvedDataService.ApprovedDataData$.subscribe((approvedTeam: ApprovedTeam | null) => {
       if (approvedTeam) {
         // console.log(project);
-      
-     
-       
+
+
+
         const newData: PeriodicElementApproved = {
           phase: approvedTeam.phase,
-      
+
           numberOfResources: approvedTeam.numberOfResources,
           role: approvedTeam.role,
           availabilityPercentage: approvedTeam.availabilityPercentage
-        
-      
+
+
         };
         // console.log(newData);
         this.dataSourceApproved = [...this.dataSourceApproved, newData];
@@ -130,14 +210,14 @@ export class ParticularProjectPageComponent implements OnInit {
     this.stakeDataService.stakeholderData$.subscribe((stakeholder: Stakeholder | null) => {
       if (stakeholder) {
         // console.log(project);
-      
-     
-       
+
+
+
         const newData: PeriodicElement = {
           title: stakeholder.title,
           name: stakeholder.name,
-          contact:stakeholder.contact
-      
+          contact: stakeholder.contact
+
         };
         console.log(newData);
         this.dataSource = [...this.dataSource, newData];
@@ -145,13 +225,126 @@ export class ParticularProjectPageComponent implements OnInit {
         this.changeDetectorRef.detectChanges();
       }
     })
-    
+
+
+    this.resourceDataService.ResourceDataData$.subscribe((resource: ResourceAllocation | null) => {
+      if (resource) {
+        // console.log(project);
+
+
+
+        const newData: PeriodicElementResource = {
+          allocationPercentage: resource.allocationPercentage,
+          start: resource.start,
+          end: resource.end,
+          role: resource.role
+
+
+        };
+        console.log(newData);
+        this.dataSourceResource = [...this.dataSourceResource, newData];
+        // console.log(this.dataSource);
+        this.changeDetectorRef.detectChanges();
+      }
+    })
+
 
 
 
   }
 
-  loadApprovedTeam(): void{
+  loadMomsMeeting(): void {
+    this.meetingServics.getAllMeetings().subscribe(
+      (response: any) => {
+        // console.log('stakeholders:', response.items);
+        this.momsMeeting = response.items;
+        const id = this.projectId;
+        this.momsMeeting = this.momsMeeting.filter(team => team.projectId === id);
+        console.log(this.momsMeeting);
+
+        this.dataSourceMomsMeeting = this.momsMeeting.map((meeting, index) => ({
+
+
+          meetingDate: meeting.meetingDate,
+          moMLink: meeting.moMLink,
+          comments: meeting.comments
+
+        }));
+        this.changeDetectorRef.detectChanges();
+      },
+      (error) => {
+        console.error('Error loading moms meeting:', error);
+      }
+    )
+  }
+
+
+  loadClientFeedback(): void {
+    this.feedbackService.getAllFeedbacks().subscribe(
+      (response: any) => {
+        // console.log('stakeholders:', response.items);
+        this.clientFeedbacks = response.items;
+        const id = this.projectId;
+        this.clientFeedbacks = this.clientFeedbacks.filter(team => team.projectId === id);
+        console.log(this.clientFeedbacks);
+
+        this.dataSourceClientFeedback = this.clientFeedbacks.map((clientFeedback, index) => ({
+
+
+          feedbackType: this.getFeedbackFromType(clientFeedback.feedbackType),
+          dateReceived: clientFeedback.dateReceived,
+          detailedFeedback: clientFeedback.detailedFeedback,
+          actionTaken: clientFeedback.actionTaken
+
+
+        }));
+        this.changeDetectorRef.detectChanges();
+      },
+      (error) => {
+        console.error('Error loading client feedbacks:', error);
+      }
+    )
+  }
+
+
+
+  loadResource(): void {
+    this.resourceAllocationService.getAllResourceAllocations().subscribe(
+      (response: any) => {
+        // console.log('stakeholders:', response.items);
+        this.resources = response.items;
+        const id = this.projectId;
+        this.resources = this.resources.filter(team => team.projectId === id);
+        console.log(this.resources);
+
+        this.dataSourceResource = this.resources.map((resource, index) => ({
+          allocationPercentage: resource.allocationPercentage,
+          start: resource.start,
+          end: resource.end,
+          role: resource.role
+
+        }));
+        this.changeDetectorRef.detectChanges();
+      },
+      (error) => {
+        console.error('Error loading resources:', error);
+      }
+    )
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  loadApprovedTeam(): void {
     this.approvedTeamService.getAllApprovedTeams().subscribe(
       (response: any) => {
         // console.log('stakeholders:', response.items);
@@ -161,12 +354,12 @@ export class ParticularProjectPageComponent implements OnInit {
 
         this.dataSourceApproved = this.approvedTeams.map((approvedTeam, index) => ({
           phase: approvedTeam.phase,
-      
+
           numberOfResources: approvedTeam.numberOfResources,
           role: approvedTeam.role,
           availabilityPercentage: approvedTeam.availabilityPercentage
 
-        
+
         }));
         this.changeDetectorRef.detectChanges();
       },
@@ -176,7 +369,7 @@ export class ParticularProjectPageComponent implements OnInit {
     )
   }
 
-  loadStakeholder() :void {
+  loadStakeholder(): void {
     this.stakeService.getAllStakeholders().subscribe(
       (response: any) => {
         console.log('stakeholders:', response.items);
@@ -191,7 +384,7 @@ export class ParticularProjectPageComponent implements OnInit {
         }));
 
 
-   
+
 
         this.changeDetectorRef.detectChanges();
       },
@@ -215,6 +408,16 @@ export class ParticularProjectPageComponent implements OnInit {
     }
   }
 
+  getFeedbackFromType(type: any): string {
+    switch (type) {
+      case 0:
+        return 'Complaint';
+      case 1:
+        return 'Appreciation';
+      default:
+        return '';
+    }
+  }
 
 
 
@@ -357,7 +560,7 @@ export class ParticularProjectPageComponent implements OnInit {
                             this.momsMeeting = this.momsMeeting.filter((item) => item.projectId === id);
                             this.auditService.getAllAudits().subscribe(
                               (response: any) => {
-                                console.log( 'all audits', response );
+                                console.log('all audits', response);
                                 this.audit = response.items;
                                 this.audit = this.audit.filter((item) => item.projectId === id);
                                 // console.log(this.audit);
@@ -365,7 +568,7 @@ export class ParticularProjectPageComponent implements OnInit {
 
                               },
                               error => {
-                                console.error('Error getting all Audits for the Project',error);
+                                console.error('Error getting all Audits for the Project', error);
                               }
                             )
 
@@ -533,14 +736,14 @@ export class ParticularProjectPageComponent implements OnInit {
         item.meetingDate.toString(),
         item.moMLink,
         item.comments
-      
-       
+
+
       ]);
       yPos = this.printSection(doc, 'Meeting data', momsMeetingHeaders, momsMeetingData, yPos);
     } else {
       doc.setFontSize(12);
       doc.text('No content available here', 10, yPos);
-      yPos += 20; 
+      yPos += 20;
     }
 
 
@@ -550,7 +753,7 @@ export class ParticularProjectPageComponent implements OnInit {
 
 
     if (this.audit && this.audit.length > 0) {
-      const auditHeaders = ['projectId', 'dateOfAudit', 'reviewedBy', 'status','reviewedSection','commentQueries','actionItem'];
+      const auditHeaders = ['projectId', 'dateOfAudit', 'reviewedBy', 'status', 'reviewedSection', 'commentQueries', 'actionItem'];
       const auditData = this.audit.map(item => [
         item.projectId,
         item.dateOfAudit.toString(),
@@ -559,15 +762,15 @@ export class ParticularProjectPageComponent implements OnInit {
         item.reviewedSection,
         item.commentQueries,
         item.actionItem
-      
-      
-       
+
+
+
       ]);
       yPos = this.printSection(doc, 'Audit History data', auditHeaders, auditData, yPos);
     } else {
       doc.setFontSize(12);
       doc.text('No content available here', 10, yPos);
-      yPos += 20; 
+      yPos += 20;
     }
 
 

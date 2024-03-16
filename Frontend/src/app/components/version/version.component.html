@@ -5,8 +5,13 @@
         <div class="inner-form-container">
           <mat-form-field appearance="outline">
             <mat-label>Change Type</mat-label>
-            <input matInput formControlName="changeType" type="number" placeholder="Change Type">
-            <mat-error *ngIf="versionForm.get('changeType')?.invalid">Change Type is required.</mat-error>
+            <!-- <input matInput >
+            <mat-error *ngIf="versionForm.get('changeType')?.invalid">Change Type is required.</mat-error> -->
+            <mat-select formControlName="changeType"  placeholder="Change Type">
+              @for (food of foods; track food) {
+                <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+              }
+            </mat-select>
           </mat-form-field>
           
           <mat-form-field appearance="outline">

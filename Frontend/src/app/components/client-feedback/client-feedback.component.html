@@ -10,8 +10,14 @@
                 
                   <mat-form-field appearance="outline">
                     <mat-label>Feedback Type</mat-label>
-                    <input matInput formControlName="feedbackType" placeholder="Feedback Type">
+                    <!-- <input matInput > -->
                     <!-- Add error message handling if needed -->
+                    <mat-select formControlName="feedbackType" placeholder="Feedback Type">
+                      @for (food of foods; track food) {
+                        <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                      }
+                    </mat-select>
+                    
                   </mat-form-field>
             </div>
       

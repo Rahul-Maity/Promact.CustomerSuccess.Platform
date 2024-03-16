@@ -8,8 +8,11 @@ mat-form-field{
 }
 
 button{
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 width: 6rem;
     margin-left: 10px;
 }
 
+mat-select,input
+{
+    height: 20px;
+}

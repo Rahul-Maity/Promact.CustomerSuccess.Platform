@@ -2,6 +2,18 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FeedbackService } from '../../shared/feedback.service';
 import { Feedback } from '../../models/Feedback';
+import { Stakeholder } from '../../models/Stakeholder';
+import { StakeholderService } from '../../shared/stakeholder.service';
+import { HttpClient } from '@angular/common/http';
+import { NgToastService } from 'ng-angular-popup';
+import { tap } from 'rxjs';
+
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-client-feedback',
   templateUrl: './client-feedback.component.html',
@@ -11,8 +23,8 @@ export class ClientFeedbackComponent implements OnInit {
 
   @Input() projectId!: string;
   feedbackForm !: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService) { }
+  stakeHolders: Stakeholder[] = [];
+  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService,private stakeholderService: StakeholderService, private http: HttpClient, private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.feedbackForm = this.formBuilder.group({
@@ -38,8 +50,51 @@ export class ClientFeedbackComponent implements OnInit {
       this.feedbackService.createFeedback(feedbackData).subscribe(
         (response) => {
           console.log('Feedback created successfully:', response);
-          this.feedbackForm.reset();
-          this.feedbackForm.patchValue({ projectId: this.projectId }); 
+          // this.feedbackForm.reset();
+          // this.feedbackForm.patchValue({ projectId: this.projectId }); 
+
+          
+          this.toast.success({ detail: "Client Feedback created", summary: 'Refresh to see the changes', duration: 3000 });
+   
+
+
+          this.stakeholderService.getAllStakeholders().subscribe(
+            (response: any) => {
+              console.log('Getting Stakeholders', response.items);
+              this.stakeHolders = response.items;
+              this.stakeHolders = this.stakeHolders.filter(stakeholder => stakeholder.projectId === this.projectId);
+
+              console.log('filtered stakeholders',this.stakeHolders);
+              this.sendEmail(this.stakeHolders, feedbackData).subscribe(
+                () => {
+                  console.log('email sent successfully');
+                  
+          this.toast.success({ detail: "Success",summary:'Email sent to all stakeholders',duration: 3000 });
+                  this.feedbackForm.reset();
+                  this.feedbackForm.patchValue({ projectId: this.projectId });
+
+                },
+                (error) => {
+                  console.error('error sending emails', error);
+                }
+              );
+
+
+
+
+
+            },
+            (error) => {
+              console.warn('error getting stakeholders:', error);
+            }
+          );
+
+          
+          
+          
+          
+          
+          
         },
         (error) => {
           console.error('Error creating feedback:', error);
@@ -50,5 +105,23 @@ export class ClientFeedbackComponent implements OnInit {
     }
   }
 
+
+
+
+  sendEmail(stakeholders: Stakeholder[], feedbackData:Feedback) {
+    return this.http.post('https://localhost:44347/api/Email/sendEmailClientFeedback', { stakeholders, feedbackData }).pipe(
+      tap(
+        () => console.log('Email sent successfully'),
+        (error) => console.error('Error sending emails:', error)
+      )
+    );
+  }
+
+
+  foods: Food[] = [
+    {value: 'Complaint', viewValue: 'Complaint'},
+    { value: 'Appreciation', viewValue: 'Appreciation' }
+  
+  ];
 
 }
