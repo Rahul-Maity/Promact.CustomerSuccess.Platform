@@ -1,4 +1,15 @@
 # Promact.CustomerSuccess.Platform
+## Overview
+
+The Customer Success Platform Application is being developed to address the following needs and objectives:
+
+- **Enhanced Communication:** To improve communication and transparency by keeping stakeholders informed about relevant updates or changes within our system.
+
+- **Efficiency:** To automate the process of notifying stakeholders, saving time and effort compared to manual notification methods.
+
+- **Improved Stakeholder Engagement:** By providing stakeholders with timely updates, we aim to increase their engagement and satisfaction with our services.
+
+- **Competitive Advantage:** By implementing this application, we can differentiate ourselves from competitors by offering a more transparent and responsive communication process.
 
 ## About this solution
 
@@ -45,6 +56,7 @@ abp install-libs
 
 > This command installs all NPM packages for MVC/Razor Pages and Blazor Server UIs and this command is already run by the ABP CLI, so most of the time you don't need to run this command manually.
 
+
 ### How to Run
 
 The application needs to connect to a database. Run the following command in the `Promact.CustomerSuccess.Platform` directory to migrate the database and seed the initial data:
@@ -52,8 +64,70 @@ The application needs to connect to a database. Run the following command in the
 ````bash
 dotnet run --migrate-database
 ````
-
 This command will create and seed the initial database. Then you can run the application with any IDE that supports .NET.
+
+### How to Run frontend 
+
+Navigate to the frontend directory:
+
+````bash
+cd yourproject/frontend
+````
+Install dependencies:
+````bash
+npm install
+````
+
+Start the Angular development server:
+````bash
+ng serve
+````
+Open a web browser and go to http://localhost:4200 to access the application.
+
+### Homepage
+![Screenshot](Screenshot%20(229).png)
+
+## Usage
+
+### Creating a Project
+1. **Navigate** to the page where the project management functionality is available.
+2. **Locate** and click on the `"Create project"` button.
+3. **Fill in** the required details:  `"Project name"`,  `"Project Details"`,  `"Project manager"`
+4. After filling in the details, **submit** the form to create the project.
+
+### Viewing Project Details
+1. Once a project is created, its details will be displayed in a table below.
+2. **Locate** the project in the table to view its details.
+
+### Entering Project Section
+After locating the desired project in the table, **click** on its name, You will be directed to the section dedicated to that particular project, where you can perform further actions or view additional details related to the project.
+
+### Particular project page
+![Screenshot](Screenshot%20(232).png)
+
+### Creating project details 
+- You will be directed to the section dedicated to that particular project, where you can find forms organized in multiple tabs for creating details specific to the project.
+- Upon creating project details, the updated information is displayed below the form in a tabular format after refreshing the page.
+  
+### email notification 
+- In this project, multiple stakeholders can be added for a particular project using the form in tabs. A feature allows sending email notifications to all stakeholders.
+- After any form submission, stakeholders added to the project receive real-time emails to keep them updated on any project changes. 
+    
+### export pdf
+- On this page, users can access an `"Export PDF"` button. Clicking it allows them to download an offline copy of the project details, facilitating easy access and reference outside the online environment.
+
+## Technology Used
+
+### Frontend
+- Angular
+- TypeScript
+- Angular Material UI
+
+### Backend
+- [ABP.IO](https://abp.io/)
+- C#
+
+This project leverages Angular and TypeScript for frontend development, alongside the Angular Material UI library for enhanced user interface components. On the backend, it utilizes the ABP.IO framework, implemented using the C# programming language.
 
 ### Deploying the application
 
