@@ -71,7 +71,7 @@ This command will create and seed the initial database. Then you can run the app
 Navigate to the frontend directory:
 
 ````bash
-cd yourproject/frontend
+cd projectname/frontend
 ````
 Install dependencies:
 ````bash
