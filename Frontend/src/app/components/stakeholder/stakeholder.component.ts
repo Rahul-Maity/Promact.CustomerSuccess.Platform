@@ -74,8 +74,9 @@ export class StakeholderComponent implements OnInit{
       this.stakeholderService.createStakeholder(stakeholderData).subscribe(
         (response) => {
           console.log('Stakeholder created successfully:', response);
+          this.stakeDataService.updatestakeholderData(stakeholderData);
            this.stakeholderCreated.emit();
-          this.toast.success({ detail: "SUCCESS", summary: 'Approved Team created', duration: 5000 });
+          this.toast.success({ detail: "SUCCESS", summary: 'Stakeholder Added', duration: 5000 });
           // Reset the form after successful submission
           this.stakeholderForm.reset();
           this.stakeholderForm.patchValue({ projectId: this.projectId }); 

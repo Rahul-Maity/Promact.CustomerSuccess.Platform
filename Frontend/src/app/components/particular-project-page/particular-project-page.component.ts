@@ -24,6 +24,7 @@ import { ApprovedDataService } from '../../shared/approved-data.service';
 import { ResourceDataService } from '../../shared/resource-data.service';
 import { FeedbackDataService } from '../../shared/feedback-data.service';
 import { MeetingDataService } from '../../shared/meeting-data.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 
 
@@ -83,7 +84,7 @@ export interface PeriodicElementMomsMeeting {
 
 
 export class ParticularProjectPageComponent implements OnInit {
-
+ 
 
   displayedColumns: string[] = ['title', 'name', 'contact'];
   displayedColumnsApproved: string[] = ['phase', 'numberOfResources', 'role', 'availabilityPercentage'];
@@ -106,7 +107,7 @@ export class ParticularProjectPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private approvedTeamService: ApprovedTeamService,
     private resourceAllocationService: ResourceAllocationService, private feedbackService: FeedbackService,
-    private projectUpdateService: ProjectUpdateService, private budgetService: BudgetService, private meetingServics: MeetingService, private auditService: AuditService, private stakeService: StakeholderService, private changeDetectorRef: ChangeDetectorRef, private stakeDataService: StakeholderDataService, private approvedDataService: ApprovedDataService, private resourceDataService: ResourceDataService, private feedbackDataService: FeedbackDataService,private meetingDataService:MeetingDataService) { }
+    private projectUpdateService: ProjectUpdateService, private budgetService: BudgetService, private meetingServics: MeetingService, private auditService: AuditService, private stakeService: StakeholderService, private changeDetectorRef: ChangeDetectorRef, private stakeDataService: StakeholderDataService, private approvedDataService: ApprovedDataService, private resourceDataService: ResourceDataService, private feedbackDataService: FeedbackDataService,private meetingDataService:MeetingDataService,public auth: AuthService) { }
 
 
 
@@ -121,11 +122,31 @@ export class ParticularProjectPageComponent implements OnInit {
 
 
   projectName: string = '';
-
+  // someCondition: boolean = false;
+  userProfile: string | null = null;
+  userEmail: string | null = null;
   ngOnInit(): void {
+    this.auth.user$.subscribe((profile) => {
+      if (profile) {
+        this.userProfile = JSON.stringify(profile, null, 2);
+      const userProfileObject = profile as any; // Assuming profile is of type 'any' for simplicity
+      this.userEmail = userProfileObject.email;
+      }
+      else {
+        this.userProfile = null;
+        this.userEmail = null;
+      }
+      
+    });
+
+   
     this.route.params.subscribe(params => {
       this.projectId = params['projectId'];
       this.projectName = params['projectName'];
+
+
+   
+   
 
     })
 

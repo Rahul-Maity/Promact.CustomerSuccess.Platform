@@ -43,7 +43,7 @@ export class ScopeComponent implements OnInit {
 
 
 
-          this.toast.success({ detail: "Project scope created", summary: 'Refresh to see the changes', duration: 3000 });
+          this.toast.success({ detail: "Project scope created",  duration: 3000 });
 
 
 

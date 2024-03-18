@@ -39,7 +39,7 @@ export class ProjectUpdateComponent implements OnInit{
 
 
 
-          this.toast.success({ detail: "Project Update created", summary: 'Refresh to see the changes', duration: 3000 });
+          this.toast.success({ detail: "Project Update created", duration: 3000 });
 
 
 

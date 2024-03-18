@@ -67,7 +67,7 @@ export class VersionComponent implements OnInit{
           console.log('Version created successfully:', response);
 
 
-          this.toast.success({ detail: "Version document created", summary: 'Refresh to see the changes', duration: 3000 });
+          this.toast.success({ detail: "Version document created",  duration: 3000 });
 
 
 

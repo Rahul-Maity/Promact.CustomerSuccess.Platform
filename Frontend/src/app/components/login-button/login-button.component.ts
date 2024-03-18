@@ -9,18 +9,18 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class LoginButtonComponent implements OnInit{
 
-  userProfile: any;
+
+
+
 
   constructor(public auth: AuthService) { }
   
 
   ngOnInit(): void {
+   
+   
 
  }
-
- getUserProfile(): void {
-  
-}
 
 
   handleLogin(): void{

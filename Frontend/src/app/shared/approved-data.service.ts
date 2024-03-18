@@ -8,7 +8,7 @@ import { ApprovedTeam } from '../models/approvedTeam';
 export class ApprovedDataService {
   private ApprovedDataSubject = new BehaviorSubject<ApprovedTeam | null>(null);
   ApprovedDataData$ = this.ApprovedDataSubject.asObservable();
-    updateProjectData(approved: ApprovedTeam) {
+    updateApprovedData(approved: ApprovedTeam) {
     this.ApprovedDataSubject.next(approved);
   }
   constructor() { }

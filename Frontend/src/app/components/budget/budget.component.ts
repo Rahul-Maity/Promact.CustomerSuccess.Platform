@@ -58,7 +58,7 @@ export class BudgetComponent implements OnInit {
         (response) => {
           console.log('Budget created successfully:', response);
           
-          this.toast.success({ detail: "project budget created", summary: 'Refresh to see the changes', duration: 3000 });
+          this.toast.success({ detail: "project budget created", duration: 3000 });
    
 
 

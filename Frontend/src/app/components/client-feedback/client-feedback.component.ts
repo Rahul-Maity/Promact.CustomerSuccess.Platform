@@ -7,6 +7,7 @@ import { StakeholderService } from '../../shared/stakeholder.service';
 import { HttpClient } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
 import { tap } from 'rxjs';
+import { FeedbackDataService } from '../../shared/feedback-data.service';
 
 
 interface Food {
@@ -24,7 +25,7 @@ export class ClientFeedbackComponent implements OnInit {
   @Input() projectId!: string;
   feedbackForm !: FormGroup;
   stakeHolders: Stakeholder[] = [];
-  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService,private stakeholderService: StakeholderService, private http: HttpClient, private toast: NgToastService) { }
+  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService,private stakeholderService: StakeholderService, private http: HttpClient, private toast: NgToastService,private feedbackDataService:FeedbackDataService) { }
 
   ngOnInit(): void {
     this.feedbackForm = this.formBuilder.group({
@@ -50,11 +51,11 @@ export class ClientFeedbackComponent implements OnInit {
       this.feedbackService.createFeedback(feedbackData).subscribe(
         (response) => {
           console.log('Feedback created successfully:', response);
-          // this.feedbackForm.reset();
-          // this.feedbackForm.patchValue({ projectId: this.projectId }); 
+          this.feedbackDataService.updateFeedbackData(feedbackData);
+        
 
           
-          this.toast.success({ detail: "Client Feedback created", summary: 'Refresh to see the changes', duration: 3000 });
+          this.toast.success({ detail: "Client Feedback created",  duration: 3000 });
    
 
 

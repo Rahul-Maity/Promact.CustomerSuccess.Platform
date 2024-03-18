@@ -49,7 +49,7 @@ export class DocumentComponent {
 
 
 
-          this.toast.success({ detail: "Document created", summary: 'Refresh to see the changes', duration: 3000 });
+          this.toast.success({ detail: "Document created",  duration: 3000 });
 
 
 

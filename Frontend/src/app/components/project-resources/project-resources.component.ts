@@ -7,6 +7,7 @@ import { StakeholderService } from '../../shared/stakeholder.service';
 import { HttpClient } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
 import { tap } from 'rxjs';
+import { ResourceDataService } from '../../shared/resource-data.service';
 
 @Component({
   selector: 'app-project-resources',
@@ -17,7 +18,7 @@ export class ProjectResourcesComponent implements OnInit{
 
   @Input() projectId!: string; 
   stakeHolders: Stakeholder[] = [];
-  constructor(private formBuilder: FormBuilder, private resourceAllocationService: ResourceAllocationService,private stakeholderService: StakeholderService, private http: HttpClient, private toast: NgToastService) { }
+  constructor(private formBuilder: FormBuilder, private resourceAllocationService: ResourceAllocationService,private stakeholderService: StakeholderService, private http: HttpClient, private toast: NgToastService,private resourceDataService:ResourceDataService) { }
 
   resourceAllocationForm !: FormGroup;
   ngOnInit(): void {
@@ -42,11 +43,12 @@ export class ProjectResourcesComponent implements OnInit{
       }
       this.resourceAllocationService.createResourceAllocation(resourceAllocationData).subscribe(
         (response) => {
+          this.resourceDataService.updateResourceData(resourceAllocationData);
           console.log('Resource allocation created successfully:', response);
             // Handle success
 
 
-          this.toast.success({ detail: "Resource data created", summary: 'Refresh to see the changes', duration: 3000 });
+          this.toast.success({ detail: "Resource data created",  duration: 3000 });
 
 
 

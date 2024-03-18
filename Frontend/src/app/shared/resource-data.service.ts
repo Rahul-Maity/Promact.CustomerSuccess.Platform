@@ -7,7 +7,7 @@ import { ResourceAllocation } from '../models/ResourceAllocation';
 export class ResourceDataService {
   private ResourceDataSubject = new BehaviorSubject<ResourceAllocation | null>(null);
   ResourceDataData$ = this.ResourceDataSubject.asObservable();
-    updateProjectData(resource: ResourceAllocation) {
+    updateResourceData(resource: ResourceAllocation) {
     this.ResourceDataSubject.next(resource);
   }
   constructor() { }
@@ -21,18 +21,3 @@ export class ResourceDataService {
 
 
 
-// import { Injectable } from '@angular/core';
-// import { BehaviorSubject } from 'rxjs';
-// import { ApprovedTeam } from '../models/approvedTeam';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ApprovedDataService {
-//   private ApprovedDataSubject = new BehaviorSubject<ApprovedTeam | null>(null);
-//   ApprovedDataData$ = this.ApprovedDataSubject.asObservable();
-//     updateProjectData(approved: ApprovedTeam) {
-//     this.ApprovedDataSubject.next(approved);
-//   }
-//   constructor() { }
-// }

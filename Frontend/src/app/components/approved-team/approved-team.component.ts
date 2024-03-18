@@ -7,6 +7,7 @@ import { Stakeholder } from '../../models/Stakeholder';
 import { StakeholderService } from '../../shared/stakeholder.service';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
+import { ApprovedDataService } from '../../shared/approved-data.service';
 @Component({
   selector: 'app-approved-team',
   templateUrl: './approved-team.component.html',
@@ -17,7 +18,7 @@ export class ApprovedTeamComponent implements OnInit {
   approvedForm !: FormGroup;
   stakeHolders: Stakeholder[] = [];
 
-  constructor(private formBuilder: FormBuilder, private approvedTeamService: ApprovedTeamService, private toast: NgToastService, private stakeholderService: StakeholderService, private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private approvedTeamService: ApprovedTeamService, private toast: NgToastService, private stakeholderService: StakeholderService, private http: HttpClient,private approvedDataService:ApprovedDataService) { }
 
   ngOnInit(): void {
     this.approvedForm = this.formBuilder.group({
@@ -44,10 +45,10 @@ export class ApprovedTeamComponent implements OnInit {
       this.approvedTeamService.createApprovedTeam(approvedTeamData).subscribe(
         (response) => {
           console.log('Approved created successfully:', response);
+          this.approvedDataService.updateApprovedData(approvedTeamData);
 
 
-
-          this.toast.success({ detail: "Approved Team created", summary: 'Refresh to see the changes', duration: 5000 });
+          this.toast.success({ detail: "Approved Team created",  duration: 5000 });
 
           // this.approvedForm.reset();
           // this.approvedForm.patchValue({ projectId: this.projectId }); 

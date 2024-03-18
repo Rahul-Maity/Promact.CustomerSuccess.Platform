@@ -7,6 +7,7 @@ import { StakeholderService } from '../../shared/stakeholder.service';
 import { HttpClient } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
 import { tap } from 'rxjs';
+import { MeetingDataService } from '../../shared/meeting-data.service';
 @Component({
   selector: 'app-moms-meeting',
   templateUrl: './moms-meeting.component.html',
@@ -17,7 +18,7 @@ export class MomsMeetingComponent implements OnInit {
 
   meetingForm !: FormGroup;
   stakeHolders: Stakeholder[] = [];
-  constructor(private formBuilder: FormBuilder, private meetingService: MeetingService,private stakeholderService: StakeholderService, private http: HttpClient, private toast: NgToastService) { }
+  constructor(private formBuilder: FormBuilder, private meetingService: MeetingService,private stakeholderService: StakeholderService, private http: HttpClient, private toast: NgToastService,private meetingDataService:MeetingDataService) { }
 
   ngOnInit(): void {
     this.meetingForm = this.formBuilder.group({
@@ -39,10 +40,11 @@ export class MomsMeetingComponent implements OnInit {
       this.meetingService.createMeeting(meetingData).subscribe(
         (response) => {
           console.log('Meeting created successfully:', response);
+          this.meetingDataService.updateMeetingData(meetingData);
 
           // this.meetingForm.reset();
           // this.meetingForm.patchValue({ projectId: this.projectId }); 
-          this.toast.success({ detail: "Meeting data created", summary: 'Refresh to see the changes', duration: 3000 });
+          this.toast.success({ detail: "Meeting data created",  duration: 3000 });
    
 
 
