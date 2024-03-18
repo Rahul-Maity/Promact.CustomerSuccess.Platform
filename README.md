@@ -71,7 +71,7 @@ This command will create and seed the initial database. Then you can run the app
 Navigate to the frontend directory:
 
 ````bash
-cd yourproject/frontend
+cd projectname/frontend
 ````
 Install dependencies:
 ````bash
@@ -128,6 +128,9 @@ After locating the desired project in the table, **click** on its name, You will
 - C#
 
 This project leverages Angular and TypeScript for frontend development, alongside the Angular Material UI library for enhanced user interface components. On the backend, it utilizes the ABP.IO framework, implemented using the C# programming language.
+
+## Third-party Integrations
+- Implemented "`Auth0 authentication"` for seamless login and logout functionalities. Utilizing the single-page application (SPA) architecture, users can securely access the system, enhancing both user experience and data security.
 
 ### Deploying the application
 
