@@ -11,6 +11,10 @@ The Customer Success Platform Application is being developed to address the foll
 
 - **Competitive Advantage:** By implementing this application, we can differentiate ourselves from competitors by offering a more transparent and responsive communication process.
 
+## Auditor credentials for my project
+- mail id `sourav@gmail.com`
+- Password `Sourav#123`
+
 ## About this solution
 
 This is a minimalist, non-layered startup solution with the ABP Framework. All the fundamental ABP modules are already installed. 
