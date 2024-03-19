@@ -48,7 +48,7 @@ export class ApprovedTeamComponent implements OnInit {
           this.approvedDataService.updateApprovedData(approvedTeamData);
 
 
-          this.toast.success({ detail: "Approved Team created",  duration: 5000 });
+          this.toast.success({ detail: "Approved Team created",  duration: 3000 });
 
           // this.approvedForm.reset();
           // this.approvedForm.patchValue({ projectId: this.projectId }); 
@@ -74,6 +74,7 @@ export class ApprovedTeamComponent implements OnInit {
               console.log('filtered stakeholders',this.stakeHolders);
               this.sendEmail(this.stakeHolders, approvedTeamData).subscribe(
                 () => {
+                  this.toast.success({ detail: "Success",summary:"Email sent successfully",  duration: 5000 });
                   console.log('email sent successfully');
                   this.approvedForm.reset();
                   this.approvedForm.patchValue({ projectId: this.projectId });

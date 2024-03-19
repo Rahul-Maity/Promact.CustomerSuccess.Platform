@@ -4,7 +4,9 @@ import { DocumentIdService } from '../../shared/document-id.service';
 import { ApprovedTeam } from '../../models/approvedTeam';
 import { ApprovedTeamService } from '../../shared/approved-team.service';
 import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import 'jspdf-autotable';
+
+// import autoTable from 'jspdf-autotable';
 import { ResourceAllocationService } from '../../shared/resource-allocation.service';
 import { ResourceAllocation } from '../../models/ResourceAllocation';
 import { Feedback } from '../../models/Feedback';
@@ -654,9 +656,9 @@ export class ParticularProjectPageComponent implements OnInit {
 
     // Print approved teams section
     if (this.approvedTeams && this.approvedTeams.length > 0) {
-      const approvedTeamHeaders = ['Project ID', 'Phase', 'Number of Resources', 'Role', 'Availability Percentage', 'Duration'];
+      const approvedTeamHeaders = [ 'Phase', 'Number of Resources', 'Role', 'Availability Percentage', 'Duration'];
       const approvedTeamData = this.approvedTeams.map(team => [
-        team.projectId,
+        
         team.phase.toString(),
         team.numberOfResources.toString(),
         team.role,
@@ -677,9 +679,9 @@ export class ParticularProjectPageComponent implements OnInit {
 
     // Print resources section
     if (this.resources && this.resources.length > 0) {
-      const resourceHeaders = ['Project ID', 'Allocation Percentage', 'Start', 'End', 'Role'];
+      const resourceHeaders = [ 'Allocation Percentage', 'Start', 'End', 'Role'];
       const resourceData = this.resources.map(resource => [
-        resource.projectId,
+        
         resource.allocationPercentage.toString(),
         resource.start.toString(),
         resource.end.toString(),
@@ -693,9 +695,9 @@ export class ParticularProjectPageComponent implements OnInit {
     }
 
     if (this.clientFeedbacks && this.clientFeedbacks.length > 0) {
-      const clientFeedbacksHeaders = ['Project ID', 'feedbackType', 'dateReceived', 'detailedFeedback', 'actionTaken', 'closureDate'];
+      const clientFeedbacksHeaders = [ 'feedbackType', 'dateReceived', 'detailedFeedback', 'actionTaken', 'closureDate'];
       const clientFeedbacksData = this.clientFeedbacks.map(feedback => [
-        feedback.projectId,
+        
         feedback.feedbackType.toString(),
         feedback.dateReceived.toString(),
         feedback.detailedFeedback,
@@ -711,9 +713,9 @@ export class ParticularProjectPageComponent implements OnInit {
 
 
     if (this.projectUpdates && this.projectUpdates.length > 0) {
-      const projectUpdatesHeaders = ['Project ID', 'date', 'generalUpdates'];
+      const projectUpdatesHeaders = [ 'date', 'generalUpdates'];
       const projectUpdatesData = this.projectUpdates.map(projectUpdate => [
-        projectUpdate.projectId,
+        
         projectUpdate.date.toString(),
         projectUpdate.generalUpdates
 
@@ -751,9 +753,9 @@ export class ParticularProjectPageComponent implements OnInit {
 
 
     if (this.momsMeeting && this.momsMeeting.length > 0) {
-      const momsMeetingHeaders = ['projectId', 'meetingDate', 'moMLink', 'comments'];
+      const momsMeetingHeaders = [ 'meetingDate', 'moMLink', 'comments'];
       const momsMeetingData = this.momsMeeting.map(item => [
-        item.projectId,
+        
         item.meetingDate.toString(),
         item.moMLink,
         item.comments
@@ -774,9 +776,9 @@ export class ParticularProjectPageComponent implements OnInit {
 
 
     if (this.audit && this.audit.length > 0) {
-      const auditHeaders = ['projectId', 'dateOfAudit', 'reviewedBy', 'status', 'reviewedSection', 'commentQueries', 'actionItem'];
+      const auditHeaders = [ 'dateOfAudit', 'reviewedBy', 'status', 'reviewedSection', 'commentQueries', 'actionItem'];
       const auditData = this.audit.map(item => [
-        item.projectId,
+        
         item.dateOfAudit.toString(),
         item.reviewedBy,
         item.status,
@@ -805,6 +807,82 @@ export class ParticularProjectPageComponent implements OnInit {
 
 
 
+  // printSection(doc: any, title: string, headers: string[], data: any[][], yPos: number): number {
+  //   const startY = yPos; // Initial y position for the section
+  //   let currentPage = doc.internal.getCurrentPageInfo().pageNumber;
+
+  //   yPos += 10;
+  //   doc.setFontSize(14);
+  //   doc.setTextColor(0, 0, 0);
+  //   doc.text(title, 10, yPos);
+  //   yPos += 10;
+  //   doc.setFontSize(12);
+  //   doc.setTextColor(0, 0, 255);
+  //   doc.text(headers.join(', '), 10, yPos);
+  //   yPos += 10;
+  //   doc.setFontSize(10);
+  //   doc.setTextColor(0);
+
+  //   const maxWidth = 180; // Maximum width for wrapping
+  //   let rowHeight = 0;
+
+  //   data.forEach(row => {
+  //     let xPos = 10; // Initial x position for each row
+  //     let lines: string[] = [];
+
+  //     row.forEach(cell => {
+  //       const text = cell.toString();
+  //       const cellLines = doc.splitTextToSize(text, maxWidth);
+  //       lines.push(...cellLines); // Add lines for this cell to the array
+  //     });
+
+  //     // Calculate the height needed for this row
+  //     const lineHeight = 10; // Height of each line
+  //     const numLines = Math.max(...lines.map(line => doc.getTextDimensions(line).h));
+  //     const rowHeightForRow = numLines * lineHeight;
+
+  //     // Check if adding this row exceeds the page height
+  //     if (yPos + rowHeightForRow > doc.internal.pageSize.height - 20) {
+  //       doc.addPage(); // Add a new page
+  //       currentPage++;
+
+  //       yPos = 10;
+
+  //       // Reprint section headers
+  //       doc.setFontSize(14);
+  //       doc.setTextColor(0, 0, 0);
+  //       doc.text(title, 10, yPos);
+  //       yPos += 10;
+  //       doc.setFontSize(12);
+  //       doc.setTextColor(0, 0, 255);
+  //       doc.text(headers.join(', '), 10, yPos);
+  //       yPos += 10;
+  //       doc.setFontSize(10);
+  //       doc.setTextColor(0);
+  //     }
+
+
+  //     lines.forEach(line => {
+  //       doc.text(line, xPos, yPos);
+  //       yPos += lineHeight; // Move to the next line
+  //     });
+
+
+  //     rowHeight = Math.max(rowHeight, rowHeightForRow);
+  //   });
+
+  //   yPos += 5; // Add some padding between rows
+
+
+  //   return yPos;
+  // }
+
+
+
+
+
+
+
   printSection(doc: any, title: string, headers: string[], data: any[][], yPos: number): number {
     const startY = yPos; // Initial y position for the section
     let currentPage = doc.internal.getCurrentPageInfo().pageNumber;
@@ -814,70 +892,40 @@ export class ParticularProjectPageComponent implements OnInit {
     doc.setTextColor(0, 0, 0);
     doc.text(title, 10, yPos);
     yPos += 10;
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 255);
-    doc.text(headers.join(', '), 10, yPos);
-    yPos += 10;
-    doc.setFontSize(10);
-    doc.setTextColor(0);
 
-    const maxWidth = 180; // Maximum width for wrapping
-    let rowHeight = 0;
-
-    data.forEach(row => {
-      let xPos = 10; // Initial x position for each row
-      let lines: string[] = [];
-
-      row.forEach(cell => {
-        const text = cell.toString();
-        const cellLines = doc.splitTextToSize(text, maxWidth);
-        lines.push(...cellLines); // Add lines for this cell to the array
-      });
-
-      // Calculate the height needed for this row
-      const lineHeight = 10; // Height of each line
-      const numLines = Math.max(...lines.map(line => doc.getTextDimensions(line).h));
-      const rowHeightForRow = numLines * lineHeight;
-
-      // Check if adding this row exceeds the page height
-      if (yPos + rowHeightForRow > doc.internal.pageSize.height - 20) {
-        doc.addPage(); // Add a new page
+    // Check if there is enough space on the page for the table
+    if (yPos + 20 + (data.length + 1) * 10 > doc.internal.pageSize.height) {
+        doc.addPage(); // Add a new page if the table doesn't fit
+        yPos = 20;
         currentPage++;
+    }
 
-        yPos = 10;
+    // Set up the table headers
+    const tableHeaders = [headers];
 
-        // Reprint section headers
-        doc.setFontSize(14);
-        doc.setTextColor(0, 0, 0);
-        doc.text(title, 10, yPos);
-        yPos += 10;
-        doc.setFontSize(12);
-        doc.setTextColor(0, 0, 255);
-        doc.text(headers.join(', '), 10, yPos);
-        yPos += 10;
-        doc.setFontSize(10);
-        doc.setTextColor(0);
-      }
+    // Add the data rows
+    const tableData = data.map(row => row.map(cell => cell.toString()));
 
-
-      lines.forEach(line => {
-        doc.text(line, xPos, yPos);
-        yPos += lineHeight; // Move to the next line
-      });
-
-
-      rowHeight = Math.max(rowHeight, rowHeightForRow);
+    // Draw the table
+    doc.autoTable({
+        startY: yPos,
+        head: tableHeaders,
+        body: tableData,
+        theme: 'plain', // Customize the theme as needed
+        styles: {
+            fontSize: 10,
+            cellPadding: 2,
+            lineColor: [0, 0, 0],
+            textColor: [0, 0, 0],
+            lineWidth: 0.1
+        },
+        columnStyles: {
+            0: { fontStyle: 'bold' } // Example of custom styles for specific columns
+        }
     });
 
-    yPos += 5; // Add some padding between rows
-
-
-    return yPos;
-  }
-
-
-
-
+    return doc.autoTable.previous.finalY + 10; // Return the final y position after the table
+}
 
 
 
