@@ -1,12 +1,15 @@
 <div class="outer-container">
-<div class="button-container">
-<mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="openDialog()">+ New Project<i class="fa-solid fa-plus"></i></button>
-</mat-dialog-actions>
+    <div class="button-container">
+        <mat-dialog-actions>
+            <button id="newProject" (click)="openDialog()">
+                <span>New Project</span>
+                <mat-icon> call_made</mat-icon>
+            </button>
+        </mat-dialog-actions>
 
-</div>
-<button class="all-projects" routerLink="/all-projects">All Projects</button>
+    </div>
+    <button class="all-projects" routerLink="/all-projects">All Projects</button>
 
 
-<button class="project-details" routerLink="/project-details">Project Details</button>
+    <button class="project-details" routerLink="/project-details">Project Details</button>
 </div>

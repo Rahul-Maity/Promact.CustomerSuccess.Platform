@@ -1,4 +1,18 @@
 button{
     margin-right: 20px;
+    background-color: #32CD32;
+    border: none;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 5px 15px ;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+    
   }
-  
+
+  button:hover{
+   
+      background-color: #289528;
+    
+  }

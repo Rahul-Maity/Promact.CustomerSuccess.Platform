@@ -26,7 +26,8 @@ export class InitialProjectPageComponent implements OnInit {
 
  
 
-  displayedColumns: string[] = ['position', 'name', 'description', 'Manager'];
+  displayedColumns: string[] = ['position', 'name', 'description', 'Manager', 'Actions'];
+
   constructor(private projectDataService: ProjectDataService, private changeDetectorRef: ChangeDetectorRef,
   private projectService:ProjectService,private router:Router) { }
   dataSource: PeriodicElement[] = [];
