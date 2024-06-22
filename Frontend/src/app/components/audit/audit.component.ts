@@ -51,35 +51,31 @@ export class AuditComponent implements OnInit {
           this.toast.success({ detail: "Audit Created", summary: 'Refresh to see the changes', duration: 3000 });
 
 
-          this.stakeholderService.getAllStakeholders().subscribe(
-            (response:any) => {
-              console.log('Getting Stakeholders', response.items);
-              this.stakeHolders = response.items;
-              this.stakeHolders = this.stakeHolders.filter(stakeholder => stakeholder.projectId === this.projectId);
+          // this.stakeholderService.getAllStakeholders().subscribe(
+          //   (response:any) => {
+          //     console.log('Getting Stakeholders', response.items);
+          //     this.stakeHolders = response.items;
+          //     this.stakeHolders = this.stakeHolders.filter(stakeholder => stakeholder.projectId === this.projectId);
         
               
-          this.sendEmail(this.stakeHolders,auditData).subscribe(
-            () => {
-              this.toast.success({ detail: "Success", summary: 'Email sent to all stakeholders', duration: 3000 });
-              console.log('email sent successfully');
-              this.auditForm.reset();
-              this.auditForm.patchValue({ projectId: this.projectId });
+          // this.sendEmail(this.stakeHolders,auditData).subscribe(
+          //   () => {
+          //     this.toast.success({ detail: "Success", summary: 'Email sent to all stakeholders', duration: 3000 });
+          //     console.log('email sent successfully');
+          //     this.auditForm.reset();
+          //     this.auditForm.patchValue({ projectId: this.projectId });
 
-            },
-            (error) => {
-              console.error('error sending emails', error);  
-            }
-          );
+          //   },
+          //   (error) => {
+          //     console.error('error sending emails', error);  
+          //   }
+          // );
 
-
-
-
-
-            },
-            (error) => {
-              console.warn('error getting stakeholders:', error);
-            }
-          );
+          //   },
+          //   (error) => {
+          //     console.warn('error getting stakeholders:', error);
+          //   }
+          // );
 
 
           
@@ -98,9 +94,9 @@ export class AuditComponent implements OnInit {
 
 
 
-  sendEmail(stakeholders: Stakeholder[],auditData: Audit) {
-    return this.http.post('https://localhost:44347/api/Email/sendEmail', {stakeholders,auditData});
-  }
+  // sendEmail(stakeholders: Stakeholder[],auditData: Audit) {
+  //   return this.http.post('https://localhost:44347/api/Email/sendEmail', {stakeholders,auditData});
+  // }
 
 
 

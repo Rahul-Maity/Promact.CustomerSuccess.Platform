@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
 import { tap } from 'rxjs';
 import { FeedbackDataService } from '../../shared/feedback-data.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 
 interface Food {
@@ -25,7 +26,9 @@ export class ClientFeedbackComponent implements OnInit {
   @Input() projectId!: string;
   feedbackForm !: FormGroup;
   stakeHolders: Stakeholder[] = [];
-  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService,private stakeholderService: StakeholderService, private http: HttpClient, private toast: NgToastService,private feedbackDataService:FeedbackDataService) { }
+  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService,
+    private stakeholderService: StakeholderService, private http: HttpClient,
+    private toast: NgToastService, private feedbackDataService: FeedbackDataService,private auth:AuthService) { }
 
   ngOnInit(): void {
     this.feedbackForm = this.formBuilder.group({
@@ -47,6 +50,8 @@ export class ClientFeedbackComponent implements OnInit {
         actionTaken: this.feedbackForm.value.actionTaken,
         closureDate: this.feedbackForm.value.closureDate
       };
+
+     
 
       this.feedbackService.createFeedback(feedbackData).subscribe(
         (response) => {

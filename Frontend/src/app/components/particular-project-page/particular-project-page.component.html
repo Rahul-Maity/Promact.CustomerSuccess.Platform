@@ -9,10 +9,11 @@
 
 
 
-<div class="form-group"*ngIf="userEmail; else loginMessage">
+<!-- <div class="form-group"*ngIf="userEmail; else loginMessage"> -->
+<div class="form-group">
     <mat-tab-group>
     
-      <mat-tab *ngIf=" userEmail !== 'sourav@gmail.com'"> 
+      <mat-tab > 
         <ng-template mat-tab-label>
           <span class="custom-label">Approved Team</span>
         </ng-template>
@@ -27,13 +28,13 @@
             <!-- <app-approved-team [projectId]="projectId"></app-approved-team> -->
             <app-stakeholder    [projectId]="projectId"></app-stakeholder>
         </mat-tab>
-        <mat-tab    *ngIf=" userEmail !== 'sourav@gmail.com'"> 
+        <mat-tab   > 
           <ng-template mat-tab-label   >
             <span class="custom-label">Resources</span>
           </ng-template>
           <app-project-resources [projectId]="projectId"></app-project-resources>
         </mat-tab>
-        <mat-tab    *ngIf=" userEmail !== 'sourav@gmail.com'"> 
+        <mat-tab  > 
           <ng-template mat-tab-label>
             <span class="custom-label">Client Feedback</span>
           </ng-template>
@@ -45,19 +46,19 @@
           </ng-template>
           <app-project-update [projectId]="projectId"></app-project-update>
            </mat-tab>
-        <mat-tab     *ngIf=" userEmail !== 'sourav@gmail.com'"> 
+        <mat-tab  > 
           <ng-template mat-tab-label>
             <span class="custom-label">Moms Meeting</span>
           </ng-template>
           <app-moms-meeting [projectId]="projectId"></app-moms-meeting>
            </mat-tab>
-           <mat-tab    *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab  >
             <ng-template mat-tab-label>
               <span class="custom-label">Escalation Matrix</span>
             </ng-template>
             <app-escalation [projectId]="projectId"></app-escalation>
            </mat-tab>
-           <mat-tab  *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab >
             <ng-template mat-tab-label>
               <span class="custom-label">Budget</span>
             </ng-template>
@@ -69,25 +70,25 @@
             </ng-template>
             <app-audit [projectId]="projectId"></app-audit>
            </mat-tab>
-           <mat-tab  *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab  >
             <ng-template mat-tab-label>
               <span class="custom-label">Document</span>
             </ng-template>
             <app-document [projectId]="projectId"></app-document>
            </mat-tab>
-           <mat-tab  *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab  >
             <ng-template mat-tab-label>
               <span class="custom-label"  >Version</span>
             </ng-template>
             <app-version  [projectId]="projectId" ></app-version>
            </mat-tab>
-           <mat-tab  *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab>
             <ng-template mat-tab-label>
               <span class="custom-label">Project Scope</span>
             </ng-template>
             <app-scope [projectId]="projectId"></app-scope>
            </mat-tab>
-           <mat-tab  *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab  >
             <ng-template mat-tab-label>
               <span class="custom-label">Phase Milestone</span>
             </ng-template>
@@ -95,21 +96,21 @@
             <app-phase-milestone   [projectId]="projectId"></app-phase-milestone>
            </mat-tab>
 
-           <mat-tab  *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab  >
             <ng-template mat-tab-label>
               <span class="custom-label">Sprint</span>
             </ng-template>
             <app-sprint      [projectId]="projectId"></app-sprint>
            </mat-tab>
 
-           <mat-tab  *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab  >
             <ng-template mat-tab-label>
               <span class="custom-label">Risk Profile</span>
             </ng-template>
             <app-risk-profile  [projectId]="projectId"></app-risk-profile>
            </mat-tab>
 
-           <mat-tab  *ngIf=" userEmail !== 'sourav@gmail.com'">
+           <mat-tab>
             <ng-template mat-tab-label>
               <span class="custom-label">Project description</span>
             </ng-template>
@@ -122,14 +123,14 @@
 </div> 
 
 
-  <ng-template #loginMessage >
+  <!-- <ng-template #loginMessage >
     <div id="denied-access">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="lock"></mat-icon>
       <p><span>Unauthenticted</span>Log In into the application to have access</p>
     </div>
     
 
-    </ng-template>
+    </ng-template> -->
 
 
 

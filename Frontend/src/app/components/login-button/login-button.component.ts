@@ -1,4 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+// import { AuthService } from '../../shared/auth.service';
 import { AuthService } from '@auth0/auth0-angular';
 
 
@@ -13,7 +15,7 @@ export class LoginButtonComponent implements OnInit{
 
 
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth:AuthService,private http:HttpClient) { }
   
 
   ngOnInit(): void {
@@ -28,6 +30,9 @@ export class LoginButtonComponent implements OnInit{
 
 
   }
+
+
+ 
 
 
 }

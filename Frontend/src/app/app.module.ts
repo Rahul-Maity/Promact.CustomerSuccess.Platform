@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -50,6 +50,7 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
 import { SprintComponent } from './components/sprint/sprint.component';
 import { RiskProfileComponent } from './components/risk-profile/risk-profile.component';
 import { ProjectDescriptionComponent } from './components/project-description/project-description.component';
+import { InterceptorService } from './shared/interceptor.service';
 const routes: Routes = [
   { path: '', component: InitialProjectPageComponent },
   { path: 'all-projects', component: InitialProjectPageComponent },
@@ -121,6 +122,12 @@ const routes: Routes = [
   ],
 
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi:true
+    },
+   
     provideAnimationsAsync()
   ],
   exports: [InitialProjectPageComponent,RouterModule],
