@@ -45,12 +45,21 @@
           <th mat-header-cell *matHeaderCellDef> <span>Project Manager</span>  </th>
           <td mat-cell *matCellDef="let element"><span>{{element.Manager}}</span>  </td>
         </ng-container>
+
+
+
+        <!-- For deleting and editing -->
         <ng-container matColumnDef="Actions">
           <th mat-header-cell *matHeaderCellDef> <span>Actions</span>  </th>
-          <td mat-cell *matCellDef="let element"> <span>
-        <mat-icon>delete</mat-icon></span>  <span><mat-icon>edit
+          <td mat-cell *matCellDef="let element"> 
+            <span (click)="openConfirmDialog(element.id)">
+        <mat-icon
+        
+        >delete</mat-icon></span> 
+         <span><mat-icon>edit
 
-        </mat-icon></span></td>
+        </mat-icon></span>
+      </td>
         </ng-container>
    
       

@@ -4,6 +4,9 @@ import { ProjectDataService } from '../../shared/project-data.service';
 import { ProjectService } from '../../shared/project.service';
 import { Router } from '@angular/router';
 import { ProjectNameService } from '../../shared/project-name.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { NgToastService } from 'ng-angular-popup';
 
 
 export interface PeriodicElement {
@@ -23,13 +26,41 @@ export interface PeriodicElement {
 })
 export class InitialProjectPageComponent implements OnInit {
 
+  
+  constructor(private projectDataService: ProjectDataService, private changeDetectorRef: ChangeDetectorRef,
+    private projectService:ProjectService,private router:Router,private dialog:MatDialog,private toast:NgToastService) { }
+
+openConfirmDialog(id: string) {
+  // throw new Error('Method not implemented.');
+  const dialogRef = this.dialog.open(ConfirmDialogComponent);
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === false) {
+      this.deleteProject(id);
+    }
+  })
+
+}
+  deleteProject(id: string) {
+    // throw new Error('Method not implemented.');
+    this.projectService.deleteProject(id).subscribe(
+      () => {
+        this.dataSource = this.dataSource.filter(project => project.id !== id);
+        this.changeDetectorRef.detectChanges();
+        this.toast.success({ detail: "Success",summary:'Project deleted successfully',duration: 3000 });
+        
+      },
+      (error) => {
+        console.error('Error deleting projects', error);
+      }
+    );
+  }
+
 
  
 
   displayedColumns: string[] = ['position', 'name', 'description', 'Manager', 'Actions'];
 
-  constructor(private projectDataService: ProjectDataService, private changeDetectorRef: ChangeDetectorRef,
-  private projectService:ProjectService,private router:Router) { }
+ 
   dataSource: PeriodicElement[] = [];
 
   ngOnInit() {
@@ -93,6 +124,8 @@ export class InitialProjectPageComponent implements OnInit {
   selectProject(projectId: string,projectName:string) {
     this.router.navigate(['/project-details',projectId,projectName]);
   }
+
+ 
 
 
 

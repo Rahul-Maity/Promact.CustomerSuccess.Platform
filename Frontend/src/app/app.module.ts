@@ -51,6 +51,7 @@ import { SprintComponent } from './components/sprint/sprint.component';
 import { RiskProfileComponent } from './components/risk-profile/risk-profile.component';
 import { ProjectDescriptionComponent } from './components/project-description/project-description.component';
 import { InterceptorService } from './shared/interceptor.service';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 const routes: Routes = [
   { path: '', component: InitialProjectPageComponent },
   { path: 'all-projects', component: InitialProjectPageComponent },
@@ -83,7 +84,8 @@ const routes: Routes = [
     LogoutButtonComponent,
     SprintComponent,
     RiskProfileComponent,
-    ProjectDescriptionComponent
+    ProjectDescriptionComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -114,7 +116,7 @@ const routes: Routes = [
         redirect_uri: window.location.origin
       }
     }),
-
+    MatDialogModule
    
 
     
