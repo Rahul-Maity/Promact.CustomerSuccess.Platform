@@ -12,4 +12,14 @@
 
   button{
     margin-right: 10px;
+    background-color: #2d9d2d;
+    /* background-color: #32cd32; */
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    padding: 6px 8px;
+    cursor: pointer ;
+  }
+  form input,mat-label{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }

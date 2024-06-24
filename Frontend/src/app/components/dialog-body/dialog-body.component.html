@@ -14,7 +14,7 @@
           <input matInput placeholder="Enter project Description here" formControlName="projectDetails" required>
         </mat-form-field>
         <div>
-          <button mat-raised-button matStepperNext color="primary">Next</button>
+          <button  matStepperNext >Next</button>
         </div>
       </form>
     </mat-step>
@@ -32,8 +32,8 @@
       <div>
       
         <mat-dialog-actions>
-            <button mat-raised-button matStepperPrevious color="primary">Back</button>
-            <button mat-raised-button mat-dialog-close cdkFocusInitial color="primary" (click)="onClick()">Done</button>
+            <button  matStepperPrevious >Back</button>
+            <button  mat-dialog-close cdkFocusInitial  (click)="onClick()">Done</button>
             <!-- <button mat-button (click)="stepper.reset()">Done</button> -->
         </mat-dialog-actions>
      
