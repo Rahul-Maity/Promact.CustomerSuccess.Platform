@@ -13,7 +13,7 @@
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput formControlName="name" placeholder="Name">
+            <input matInput formControlName="name" >
             <mat-error *ngIf="stakeholderForm.get('name')?.invalid">Name is required.</mat-error>
           </mat-form-field>
         </div>
@@ -25,14 +25,14 @@
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Project ID</mat-label>
-                <input matInput formControlName="projectId" placeholder="Project ID">
+                <input matInput formControlName="projectId" placeholder="Project ID" class="blurred-text">
                 <mat-error *ngIf="stakeholderForm.get('projectId')?.invalid">Project ID is required.</mat-error>
               </mat-form-field>
           
         </div>
        
         <div class="inner-form-container">
-          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button  type="submit">Submit</button>
         </div>
       </div>
     </form>

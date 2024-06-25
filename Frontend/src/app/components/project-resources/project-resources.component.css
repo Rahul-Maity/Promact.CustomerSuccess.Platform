@@ -1,3 +1,5 @@
+
+@import '../formStyle.css';
 .form-container{
     padding: 20px;
 }
@@ -7,9 +9,5 @@ mat-form-field{
     width: 20rem;
 }
 
-button{
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-width: 6rem;
-    margin-left: 10px;
-}
+
 
